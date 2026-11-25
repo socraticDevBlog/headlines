@@ -1,0 +1,258 @@
+/* Early 20th Century Newspaper Style */
+
+:root {
+    --primary-bg: #f5f0e8;
+    --text-color: #1a1a1a;
+    --headline-color: #000000;
+    --border-color: #000000;
+    --accent-color: #8b4513;
+    --secondary-bg: #e8e0d0;
+    --rule-color: #cccccc;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--primary-bg);
+    font-family: 'Times New Roman', Times, serif;
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.newspaper {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--primary-bg);
+    border: 2px solid var(--border-color);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    border-bottom: 3px double var(--border-color);
+    padding: 20px 0;
+    margin-bottom: 10px;
+}
+
+.masthead {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--headline-color);
+    margin: 0;
+    letter-spacing: 2px;
+    font-family: 'Times New Roman', serif;
+    text-transform: uppercase;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 0;
+}
+
+.tagline {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--text-color);
+    margin: 5px 0 15px;
+    letter-spacing: 1px;
+}
+
+.date {
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 8px 20px;
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    display: inline-block;
+    margin: 10px 0;
+}
+
+/* Main Content Layout */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 15px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Article Styles */
+.lead-story {
+    border: 2px solid var(--border-color);
+    padding: 20px;
+    background-color: white;
+    grid-column: span 2;
+}
+
+.featured-article {
+    border: 2px solid var(--border-color);
+    padding: 20px;
+    background-color: white;
+}
+
+.article {
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    background-color: white;
+}
+
+.article-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--headline-color);
+    margin: 0 0 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--rule-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.featured-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--headline-color);
+    margin: 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.article-byline {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #555;
+    margin: 0 0 10px;
+}
+
+.article-content {
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+.article-date {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 10px;
+    text-align: right;
+    font-style: italic;
+}
+
+/* Ad Slot Styles */
+.ad-slot {
+    border: 2px dashed var(--border-color);
+    padding: 15px;
+    background-color: var(--secondary-bg);
+    text-align: center;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ad-banner-top, .ad-banner-footer {
+    grid-column: span 3;
+    margin-bottom: 15px;
+}
+
+.ad-tall {
+    min-height: 300px;
+}
+
+.ad-sidebar {
+    min-height: 200px;
+}
+
+.ad-label {
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+    background-color: #d0d0d0;
+    color: #555;
+    border: 1px solid #999;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.ad-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    border-top: 2px solid var(--border-color);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.footer-text {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 10px 0 0;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .main-content {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .lead-story {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .lead-story {
+        grid-column: span 1;
+    }
+    
+    .masthead {
+        font-size: 2.5rem;
+    }
+    
+    .date {
+        font-size: 0.95rem;
+    }
+    
+    .ad-banner-top, .ad-banner-footer {
+        grid-column: span 1;
+    }
+}
+
+/* Printing Styles */
+@media print {
+    body {
+        padding: 0;
+    }
+    
+    .ad-slot {
+        display: none;
+    }
+}
+
+/* Separator lines between articles */
+.article + .article,
+.article + .ad-slot,
+.ad-slot + .article {
+    border-top: 1px solid var(--rule-color);
+}
