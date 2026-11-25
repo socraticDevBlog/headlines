@@ -20,28 +20,44 @@ jobs:
         run: |
           mkdir -p data
           
-          # Call Mistral API
+          # Call Mistral API using a JSON file to avoid quoting issues
+          cat > /tmp/request.json << 'EOF'
+          {
+            "model": "mistral-medium",
+            "messages": [{
+              "role": "user",
+              "content": "Generate exactly 7 newspaper articles for Journal de la Métropole in Canadian French, early 20th century style. Each article must be a JSON object with: id (lead, 1, 2, featured, 3, 4, 5), title, content (3-4 detailed sentences), byline. Return ONLY a valid JSON array with exactly 7 articles, no extra text."
+            }],
+            "temperature": 0.7,
+            "max_tokens": 2500
+          }
+          EOF
+          
           curl -s -X POST "https://api.mistral.ai/v1/chat/completions" \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer ${{ secrets.MISTRAL_API_KEY }}" \
-            -d '{"model":"mistral-medium","messages":[{"role":"user","content":"Generate exactly 7 newspaper articles for Journal de la Métropole in Canadian French, early 20th century style. Each article: {\"id\":\"lead\",\"title\":\"...\",\"content\":\"...\",\"byline\":\"...\"}. Return ONLY a valid JSON array with 7 articles, no extra text."}],"temperature":0.7,"max_tokens":2500}' > /tmp/response.json
+            -d @/tmp/request.json > /tmp/response.json
           
-          # Extract and process
+          # Process with Python
           python3 << 'PYEOF'
 import json, random, datetime
 
 try:
     with open('/tmp/response.json') as f:
         resp = json.load(f)
-    articles = json.loads(resp['choices'][0]['message']['content'])
+    
+    content = resp['choices'][0]['message']['content']
+    articles = json.loads(content)
     
     if not isinstance(articles, list) or len(articles) != 7:
         raise ValueError(f"Expected 7 articles, got {len(articles) if isinstance(articles, list) else type(articles)}")
     
+    # Add themes
     themes = ['Politique', 'Économie', 'Technologie', 'Santé', 'Culture', 'Sports', 'Société']
     for i, art in enumerate(articles):
         art['theme'] = themes[i % len(themes)]
     
+    # Create random layout
     ids = [a['id'] for a in articles]
     random.shuffle(ids)
     layout = {
@@ -54,6 +70,7 @@ try:
         'article-5': ids[6]
     }
     
+    # Save result
     result = {
         'articles': articles,
         'layout': layout,
@@ -66,19 +83,18 @@ try:
     print("Successfully generated articles with themes and layout")
     
 except Exception as e:
-    print(f"Error: {e}")
+    import traceback
+    traceback.print_exc()
     with open('data/articles.json', 'w') as f:
         json.dump({
             'error': str(e),
             'articles': [],
             'layout': {},
             'generated_at': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        }, f)
+        }, f, ensure_ascii=False, indent=2)
 PYEOF
-          
-          cat data/articles.json | head -50
 
-      - name: Commit
+      - name: Commit changes
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
