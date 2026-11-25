@@ -1,0 +1,68 @@
+name: Generate Daily News Articles
+
+on:
+  schedule:
+    # 6 AM Montreal time (UTC-5 in winter, UTC-4 in summer)
+    # Montreal is EST (UTC-5) or EDT (UTC-4)
+    # Using 10:00 UTC = 5:00 AM EST / 6:00 AM EDT
+    - cron: '0 10 * * *'
+  workflow_dispatch:  # Manual trigger for testing
+
+jobs:
+  generate-news:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate news articles with Mistral AI
+        run: |
+          # Create data directory if it doesn't exist
+          mkdir -p data
+          
+          # Generate articles using Mistral API
+          # Using mistral-medium for quality Canadian French articles
+          ARTICLES_RESPONSE=$(curl -s -X POST "https://api.mistral.ai/v1/chat/completions" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${{ secrets.MISTRAL_API_KEY }}" \
+            -d '{
+              "model": "mistral-medium",
+              "messages": [{
+                "role": "user",
+                "content": "Génère 6 articles de journal pour le Journal de la Métropole en français canadien, style début du 20e siècle. Chaque article doit avoir un format JSON avec : id (lead, 1, 2, featured, 3, 4, 5), title, content (3-4 phrases), byline (Par [Nom], Rédacteur, Agence de Presse, etc.). Sujets : politique locale, affaires, société, technologie, santé, sports. Utilise un français québécois formel. Retourne UNIQUEMENT le JSON, sans autre texte."
+              }],
+              "temperature": 0.7,
+              "max_tokens": 2000
+            }')
+          
+          # Extract the content from the API response
+          ARTICLES=$(echo "$ARTICLES_RESPONSE" | jq -r '.choices[0].message.content')
+          
+          # Validate and save to JSON file
+          # The API should return JSON, so we validate it first
+          if echo "$ARTICLES" | jq empty 2>/dev/null; then
+            echo "$ARTICLES" | jq '{articles: ., generated_at: now | strftime("%Y-%m-%d %H:%M:%S")}' > data/articles.json
+          else
+            # Fallback: If API didn't return valid JSON, create error message
+            echo '{"error": "Failed to generate articles", "generated_at": "'$(date +%Y-%m-%d' %H:%M:%S)"'}' > data/articles.json
+          fi
+          
+          # Display the generated content for debugging
+          echo "Generated articles:"
+          cat data/articles.json | jq .
+
+      - name: Commit and push new articles
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          
+          # Only commit if articles.json has changed
+          git add data/articles.json
+          if git diff --cached --quiet; then
+            echo "No changes to articles.json, skipping commit."
+          else
+            git commit -m "Mise à jour des articles quotidiens - $(date +%Y-%m-%d)"
+            git push
+          fi

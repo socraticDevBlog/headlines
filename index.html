@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Chronicle - Est. 1923</title>
+    <title>Journal de la Métropole</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="newspaper">
         <!-- Header -->
         <header class="header">
-            <h1 class="masthead">THE DAILY CHRONICLE</h1>
-            <p class="tagline">ESTABLISHED 1923 - YOUR TRUSTED SOURCE OF NEWS</p>
+            <h1 class="masthead">JOURNAL DE LA MÉTROPOLE</h1>
+            <p class="tagline">FONDÉ EN 1923 - VOTRE SOURCE DE CONFIANCE</p>
             <div class="date display-date"></div>
         </header>
 
         <!-- Top Ad Slot -->
         <div class="ad-slot ad-banner-top">
-            <span class="ad-label">ADVERTISEMENT</span>
+            <span class="ad-label">PUBLICITÉ</span>
             <div class="ad-content" id="ad-top"></div>
         </div>
 
@@ -26,21 +26,21 @@
             <!-- Left Column (Main stories) -->
             <section class="column left-column">
                 <div class="lead-story" id="lead-article">
-                    <h2 class="article-title">Loading...</h2>
-                    <p class="article-byline">By Our Correspondent</p>
+                    <h2 class="article-title"></h2>
+                    <p class="article-byline"></p>
                     <div class="article-content"></div>
                     <p class="article-date"></p>
                 </div>
 
                 <div class="article" id="article-1">
-                    <h3 class="article-title">Loading...</h3>
-                    <p class="article-byline">Staff Writer</p>
+                    <h3 class="article-title"></h3>
+                    <p class="article-byline"></p>
                     <div class="article-content"></div>
                 </div>
 
                 <div class="article" id="article-2">
-                    <h3 class="article-title">Loading...</h3>
-                    <p class="article-byline">Staff Writer</p>
+                    <h3 class="article-title"></h3>
+                    <p class="article-byline"></p>
                     <div class="article-content"></div>
                 </div>
             </section>
@@ -48,20 +48,21 @@
             <!-- Center Column (Featured) -->
             <section class="column center-column">
                 <div class="featured-article" id="featured-article">
-                    <h2 class="article-title">FEATURED STORY</h2>
-                    <h3 class="featured-title" id="featured-title">Loading...</h3>
+                    <h2 class="article-title">ARTICLE PRINCIPAL</h2>
+                    <h3 class="featured-title" id="featured-title"></h3>
                     <div class="article-content" id="featured-content"></div>
                     <p class="article-byline" id="featured-byline"></p>
                 </div>
 
                 <!-- Ad Slot - Sidebar -->
                 <div class="ad-slot ad-sidebar">
-                    <span class="ad-label">SPONSORED</span>
+                    <span class="ad-label">COMMANDITÉ</span>
                     <div class="ad-content" id="ad-sidebar"></div>
                 </div>
 
                 <div class="article" id="article-3">
-                    <h3 class="article-title">Loading...</h3>
+                    <h3 class="article-title"></h3>
+                    <p class="article-byline"></p>
                     <div class="article-content"></div>
                 </div>
             </section>
@@ -70,24 +71,25 @@
             <section class="column right-column">
                 <!-- Ad Slot -->
                 <div class="ad-slot ad-tall">
-                    <span class="ad-label">ADVERTISEMENT</span>
+                    <span class="ad-label">PUBLICITÉ</span>
                     <div class="ad-content" id="ad-right-top"></div>
                 </div>
 
                 <div class="article" id="article-4">
-                    <h3 class="article-title">Loading...</h3>
-                    <p class="article-byline">Wire Service</p>
+                    <h3 class="article-title"></h3>
+                    <p class="article-byline"></p>
                     <div class="article-content"></div>
                 </div>
 
                 <div class="article" id="article-5">
-                    <h3 class="article-title">Loading...</h3>
+                    <h3 class="article-title"></h3>
+                    <p class="article-byline"></p>
                     <div class="article-content"></div>
                 </div>
 
                 <!-- Bottom Ad Slot -->
                 <div class="ad-slot ad-tall">
-                    <span class="ad-label">ADVERTISEMENT</span>
+                    <span class="ad-label">PUBLICITÉ</span>
                     <div class="ad-content" id="ad-right-bottom"></div>
                 </div>
             </section>
@@ -96,12 +98,26 @@
         <!-- Footer with additional ad -->
         <footer class="footer">
             <div class="ad-slot ad-banner-footer">
-                <span class="ad-label">COMMERCIAL MESSAGE</span>
+                <span class="ad-label">MESSAGE COMMERCIAL</span>
                 <div class="ad-content" id="ad-footer"></div>
             </div>
-            <p class="footer-text">The Daily Chronicle &copy; <span id="footer-year"></span> | Published Daily Since 1923</p>
+            <p class="footer-text">Journal de la Métropole &copy; <span id="footer-year"></span> | Publié Quotidiennement Depuis 1923</p>
         </footer>
     </div>
+
+    <noscript>
+        <style>
+            .newspaper { display: none; }
+            body { 
+                font-family: 'Times New Roman', serif;
+                text-align: center;
+                padding: 50px;
+                background: #f5f0e8;
+            }
+        </style>
+        <h1>Journal de la Métropole</h1>
+        <p>JavaScript est requis pour afficher ce site. Veuillez activer JavaScript.</p>
+    </noscript>
 
     <script src="app.js"></script>
 </body>

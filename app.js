@@ -1,11 +1,11 @@
 /**
- * Daily Chronicle - Early 20th Century Newspaper
- * Fetches current date (America/New_York) and AI-generated news articles
- * Includes ad slots for revenue generation
+ * Journal de la Métropole - Journal du début du 20e siècle
+ * Charge les articles depuis un fichier JSON statique généré par GitHub Actions
+ * Inclut des espaces publicitaires pour la génération de revenus
  */
 
 // ============================================
-// DATE DISPLAY
+// AFFICHAGE DE LA DATE
 // ============================================
 
 function displayCurrentDate() {
@@ -14,9 +14,9 @@ function displayCurrentDate() {
     
     if (!dateElement || !footerYearElement) return;
 
-    // Format: Weekday, Month Day, Year
+    // Format : Jour, Mois Jour, Année (Français Canadien)
     const options = {
-        timeZone: 'America/New_York',
+        timeZone: 'America/Montreal',
         weekday: 'long',
         year: 'numeric',
         month: 'long',
@@ -24,110 +24,59 @@ function displayCurrentDate() {
     };
 
     const now = new Date();
-    const formattedDate = now.toLocaleDateString('en-US', options);
+    const formattedDate = now.toLocaleDateString('fr-CA', options);
     
     dateElement.textContent = formattedDate.toUpperCase();
     footerYearElement.textContent = now.getFullYear();
 }
 
 // ============================================
-// MOCK AI NEWS API
+// CHARGEMENT DES ARTICLES DEPUIS JSON STATIQUE
 // ============================================
 
 /**
- * Simulates fetching AI-generated news articles
- * In production, this would call your AI API endpoint
+ * Charge les articles depuis le fichier JSON statique
+ * Généré quotidiennement par GitHub Actions
  */
-async function fetchAINewsArticles() {
-    // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 500));
+async function loadArticles() {
+    try {
+        const response = await fetch('data/articles.json');
+        if (!response.ok) {
+            throw new Error('Fichier articles.json introuvable');
+        }
+        const data = await response.json();
+        return data.articles;
+    } catch (error) {
+        console.error('Erreur lors du chargement des articles:', error);
+        // Retourner des articles par défaut en cas d'erreur
+        return getDefaultArticles();
+    }
+}
 
-    // Mock AI-generated articles with early 20th century style
-    const articles = [
+/**
+ * Articles par défaut en cas d'erreur de chargement
+ */
+function getDefaultArticles() {
+    return [
         {
             id: 'lead',
-            title: 'Metropolis Transformed: City Council Approves Ambitious Modernization Plan',
-            content: 'The City Council yesterday voted unanimously to approve a sweeping modernization plan that will bring electric street lighting to all districts by the end of the decade. "This is a new era for our great city," declared Mayor Theodore Whitmore. The plan also includes expanded trolley service and a new municipal building.',
-            byline: 'By Harold Winslow, Senior Correspondent',
-            date: new Date().toLocaleDateString('en-US', { 
-                timeZone: 'America/New_York',
-                year: 'numeric', month: 'long', day: 'numeric'
-            })
-        },
-        {
-            id: '1',
-            title: 'Industrial Magnate Announces New Factory',
-            content: 'Prominent industrialist Charlesworth Sterling revealed plans yesterday for a new manufacturing facility on the outskirts of town. The plant is expected to create over five hundred new positions and significantly boost the local economy.',
-            byline: 'By Margaret Holloway',
-            date: new Date().toLocaleDateString('en-US', { 
-                timeZone: 'America/New_York',
-                year: 'numeric', month: 'long', day: 'numeric'
-            })
-        },
-        {
-            id: '2',
-            title: 'Noted Aviator Sets New Distance Record',
-            content: 'The daring aviator Amelia Fairchild has once again made headlines by setting a new distance record for non-stop flight. Her journey of 2,100 miles was completed in her trusty biplane, the "Spirit of Adventure." Fairchild stated she intends to attempt a transatlantic crossing next spring.',
-            byline: 'Wire Service Report',
-            date: new Date().toLocaleDateString('en-US', { 
-                timeZone: 'America/New_York',
-                year: 'numeric', month: 'long', day: 'numeric'
-            })
-        },
-        {
-            id: 'featured',
-            title: 'The Great Debate: Progress Versus Tradition',
-            content: 'Our city stands at a crossroads. As we embrace the marvels of the modern age, we must not forget the values and traditions that have made us who we are. The new generation seeks change at a pace unprecedented, while the elders counsel patience and reflection. In this special feature, we examine both sides of this great divide and consider what the future may hold for our community.',
-            byline: 'Editorial by Edmund Blackwood',
-            date: new Date().toLocaleDateString('en-US', { 
-                timeZone: 'America/New_York',
-                year: 'numeric', month: 'long', day: 'numeric'
-            })
-        },
-        {
-            id: '3',
-            title: 'Local Agriculture: Bountiful Harvest Expected',
-            content: 'Farmers throughout the region are reporting an exceptionally promising growing season. The county agricultural extension predicts a harvest that may exceed all previous records. "The rains have been timely and the sun generous," noted farmer John Thistlewaite.',
-            byline: 'By Thomas Greenleaf',
-            date: new Date().toLocaleDateString('en-US', { 
-                timeZone: 'America/New_York',
-                year: 'numeric', month: 'long', day: 'numeric'
-            })
-        },
-        {
-            id: '4',
-            title: 'Medical Marvel: New Treatment Shows Promise',
-            content: 'Dr. Eleanor Whitmore of the City Hospital announced yesterday the successful trial of a new treatment for the consumption that has plagued our population. Early results show remarkable improvement in patients, offering new hope for those suffering from this dreaded disease.',
-            byline: 'By Helen Fairfax',
-            date: new Date().toLocaleDateString('en-US', { 
-                timeZone: 'America/New_York',
-                year: 'numeric', month: 'long', day: 'numeric'
-            })
-        },
-        {
-            id: '5',
-            title: 'Society: Grand Ball at the Waldorf',
-            content: 'The social event of the season took place last evening at the Waldorf Hotel, where the cream of society gathered for the annual Charity Ball. Over five hundred distinguished guests attended, with proceeds benefiting the Children\'s Hospital Fund. The evening featured music, dancing, and a sumptuous feast that continued well past midnight.',
-            byline: 'Society Correspondent',
-            date: new Date().toLocaleDateString('en-US', { 
-                timeZone: 'America/New_York',
-                year: 'numeric', month: 'long', day: 'numeric'
-            })
+            title: 'Chargement des articles...',
+            content: 'Veuillez rafraîchir la page.',
+            byline: 'Journal de la Métropole',
+            date: new Date().toLocaleDateString('fr-CA')
         }
     ];
-
-    return articles;
 }
 
 // ============================================
-// RENDER ARTICLES
+// AFFICHER LES ARTICLES
 // ============================================
 
 function renderArticle(article, containerId) {
     const container = document.getElementById(containerId);
     if (!container || !article) return;
 
-    // Clear loading text
+    // Effacer le texte de chargement
     const titleElement = container.querySelector('.article-title');
     const contentElement = container.querySelector('.article-content');
     const bylineElement = container.querySelector('.article-byline');
@@ -136,7 +85,7 @@ function renderArticle(article, containerId) {
     if (titleElement) titleElement.textContent = article.title;
     if (contentElement) contentElement.textContent = article.content;
     if (bylineElement) bylineElement.textContent = article.byline;
-    if (dateElement) dateElement.textContent = article.date;
+    if (dateElement) dateElement.textContent = article.date || '';
 }
 
 function renderFeaturedArticle(article) {
@@ -150,20 +99,20 @@ function renderFeaturedArticle(article) {
 }
 
 // ============================================
-// AD SLOTS
+// ESPACES PUBLICITAIRES
 // ============================================
 
 /**
- * Initialize ad slots with placeholder content
- * In production, replace with actual ad network code (Google AdSense, etc.)
+ * Initialiser les espaces publicitaires avec du contenu temporaire
+ * En production, remplacer par le code réel du réseau publicitaire (Google AdSense, etc.)
  */
 function initializeAdSlots() {
     const adSlots = [
-        { id: 'ad-top', type: 'banner', content: 'Your Ad Here - Top Banner (728x90)' },
-        { id: 'ad-sidebar', type: 'sidebar', content: 'Sponsored Content' },
-        { id: 'ad-right-top', type: 'skyscraper', content: 'Advertisement Slot' },
-        { id: 'ad-right-bottom', type: 'skyscraper', content: 'Advertisement Slot' },
-        { id: 'ad-footer', type: 'banner', content: 'Classified Advertisements' }
+        { id: 'ad-top', type: 'banner', content: 'Votre Publicité Ici - Bannière Principale (728x90)' },
+        { id: 'ad-sidebar', type: 'sidebar', content: 'Contenu Commandité' },
+        { id: 'ad-right-top', type: 'skyscraper', content: 'Espace Publicitaire' },
+        { id: 'ad-right-bottom', type: 'skyscraper', content: 'Espace Publicitaire' },
+        { id: 'ad-footer', type: 'banner', content: 'Petites Annonces Commerciales' }
     ];
 
     adSlots.forEach(slot => {
@@ -173,36 +122,36 @@ function initializeAdSlots() {
         }
     });
 
-    // Example: Load actual ads (uncomment and configure with your ad network)
+    // Exemple : Charger les vraies publicités (décommentez pour utiliser)
     // loadGoogleAds();
 }
 
 /**
- * Example function to load Google AdSense (uncomment to use)
+ * Fonction exemple pour charger Google AdSense (décommentez pour utiliser)
  */
 /*
 function loadGoogleAds() {
     try {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch (e) {
-        console.error('AdSense error:', e);
+        console.error('Erreur AdSense:', e);
     }
 }
 */
 
 // ============================================
-// INITIALIZE WEBSITE
+// INITIALISER LE SITE WEB
 // ============================================
 
 async function initializeWebsite() {
     try {
-        // Display current date
+        // Afficher la date actuelle
         displayCurrentDate();
 
-        // Fetch AI-generated news
-        const articles = await fetchAINewsArticles();
+        // Charger les articles depuis le fichier JSON
+        const articles = await loadArticles();
 
-        // Render articles
+        // Afficher les articles
         renderArticle(articles.find(a => a.id === 'lead'), 'lead-article');
         renderArticle(articles.find(a => a.id === '1'), 'article-1');
         renderArticle(articles.find(a => a.id === '2'), 'article-2');
@@ -211,77 +160,23 @@ async function initializeWebsite() {
         renderArticle(articles.find(a => a.id === '4'), 'article-4');
         renderArticle(articles.find(a => a.id === '5'), 'article-5');
 
-        // Initialize ad slots
+        // Initialiser les espaces publicitaires
         initializeAdSlots();
 
-        console.log('Daily Chronicle initialized successfully');
+        console.log('Journal de la Métropole initialisé avec succès');
+        console.log('Articles chargés depuis:', new Date().toISOString());
     } catch (error) {
-        console.error('Error initializing website:', error);
-        // Display error to user
-        document.querySelector('.display-date').textContent = 'ERROR LOADING NEWS';
+        console.error('Erreur lors de l\'initialisation du site:', error);
+        // Afficher l'erreur à l'utilisateur
+        document.querySelector('.display-date').textContent = 'ERREUR DE CHARGEMENT';
     }
 }
 
 // ============================================
-// REFRESH FUNCTION (for periodic updates)
-// ============================================
-
-/**
- * Refresh the news content periodically
- * Call this to update articles without full page reload
- */
-async function refreshNews() {
-    try {
-        const articles = await fetchAINewsArticles();
-        
-        // Re-render articles
-        renderArticle(articles.find(a => a.id === 'lead'), 'lead-article');
-        renderArticle(articles.find(a => a.id === '1'), 'article-1');
-        renderArticle(articles.find(a => a.id === '2'), 'article-2');
-        renderFeaturedArticle(articles.find(a => a.id === 'featured'));
-        renderArticle(articles.find(a => a.id === '3'), 'article-3');
-        renderArticle(articles.find(a => a.id === '4'), 'article-4');
-        renderArticle(articles.find(a => a.id === '5'), 'article-5');
-
-        console.log('News refreshed');
-    } catch (error) {
-        console.error('Error refreshing news:', error);
-    }
-}
-
-// ============================================
-// REAL AI API INTEGRATION
-// ============================================
-
-/**
- * To connect to a real AI API, use this template:
- * 
- * async function fetchFromRealAI() {
- *     const apiKey = 'YOUR_API_KEY';
- *     const endpoint = 'https://api.your-ai-provider.com/v1/news';
- *     
- *     const response = await fetch(endpoint, {
- *         method: 'POST',
- *         headers: {
- *             'Content-Type': 'application/json',
- *             'Authorization': `Bearer ${apiKey}`
- *         },
- *         body: JSON.stringify({
- *             topic: 'local news',
- *             style: 'early 20th century newspaper',
- *             count: 6
- *         })
- *     });
- *     
- *     return await response.json();
- * }
- */
-
-// ============================================
-// START WHEN PAGE LOADS
+// DÉMARRAGE LORSQUE LA PAGE EST CHARGÉE
 // ============================================
 
 document.addEventListener('DOMContentLoaded', initializeWebsite);
 
-// Optional: Auto-refresh every 5 minutes (uncomment to enable)
-// setInterval(refreshNews, 5 * 60 * 1000);
+// Optionnel : Rafraîchir automatiquement toutes les 5 minutes (décommentez pour activer)
+// setInterval(() => location.reload(), 5 * 60 * 1000);
