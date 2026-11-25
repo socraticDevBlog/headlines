@@ -2,107 +2,88 @@ name: Generate Daily News Articles
 
 on:
   schedule:
-    # 6 AM Montreal time (UTC-5 in winter, UTC-4 in summer)
-    # Montreal is EST (UTC-5) or EDT (UTC-4)
-    # Using 10:00 UTC = 5:00 AM EST / 6:00 AM EDT
     - cron: '0 10 * * *'
-  workflow_dispatch:  # Manual trigger for testing
+  workflow_dispatch:
 
 jobs:
-  generate-news:
+  generate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Install jq for JSON processing
+      - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: Generate news articles with Mistral AI
+      - name: Generate articles with themes and layout
         run: |
-          # Create data directory if it doesn't exist
           mkdir -p data
           
-          # Define themes for random assignment
-          THEMES='["Politique", "Économie", "Technologie", "Santé", "Culture", "Sports", "Société", "Agriculture", "Éducation", "Environnement"]'
-          
-          # Generate articles using Mistral API
-          ARTICLES_RESPONSE=$(curl -s -X POST "https://api.mistral.ai/v1/chat/completions" \
+          # Call Mistral API
+          curl -s -X POST "https://api.mistral.ai/v1/chat/completions" \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer ${{ secrets.MISTRAL_API_KEY }}" \
-            -d '{
-              "model": "mistral-medium",
-              "messages": [{
-                "role": "user",
-                "content": "Génère exactement 7 articles de journal pour le Journal de la Métropole en français canadien, style début du 20e siècle. Chaque article doit être en format JSON avec : id (lead, 1, 2, featured, 3, 4, 5), title, content (3-4 phrases détaillées), byline. Sujets variés : politique locale, affaires, technologie, santé, culture, sports, société. Utilise un français québécois formel et élégant. Retourne UNIQUEMENT un tableau JSON valide avec les 7 articles, sans autre texte."
-              }],
-              "temperature": 0.7,
-              "max_tokens": 2500
-            }')
+            -d '{"model":"mistral-medium","messages":[{"role":"user","content":"Generate exactly 7 newspaper articles for Journal de la Métropole in Canadian French, early 20th century style. Each article: {\"id\":\"lead\",\"title\":\"...\",\"content\":\"...\",\"byline\":\"...\"}. Return ONLY a valid JSON array with 7 articles, no extra text."}],"temperature":0.7,"max_tokens":2500}' > /tmp/response.json
           
-          # Extract the content from the API response
-          ARTICLES=$(echo "$ARTICLES_RESPONSE" | jq -r '.choices[0].message.content')
-          
-          # Save raw articles to a temporary file
-          echo "$ARTICLES" > /tmp/articles_raw.json
-          
-          # Validate and parse the JSON
-          if jq empty /tmp/articles_raw.json 2>/dev/null; then
-            # Assign random themes to each article
-            ARTICLES_WITH_THEMES=$(jq --argjson themes "$THEMES" '\
-              .[] |= . + {theme: ($themes | .[(length * rand | floor) % length])} |\
-              {articles: .}
-            ' /tmp/articles_raw.json)
-            
-            # Create layout with randomized positions
-            # Get article IDs
-            ARTICLE_IDS=$(echo "$ARTICLES_WITH_THEMES" | jq -r '.articles[].id')
-            
-            # Shuffle the IDs for random layout
-            SHUFFLED_IDS=$(echo "$ARTICLE_IDS" | tr ' ' '\n' | shuf | tr '\n' ' ' | sed 's/ $//')
-            
-            # Create layout mapping
-            LAYOUT=$(jq -n --arg ids "$SHUFFLED_IDS" '\
-              $ids | split(" ") |\
-              {
-                "lead": .[0],\
-                "featured": .[1],\
-                "article-1": .[2],\
-                "article-2": .[3],\
-                "article-3": .[4],\
-                "article-4": .[5],\
-                "article-5": .[6]
-              }
-            ')
-            
-            # Combine articles with themes and layout
-            FINAL_DATA=$(jq -n --argjson articles "$ARTICLES_WITH_THEMES" --argjson layout "$LAYOUT" '\
-              $articles | . + {layout: $layout, generated_at: now | strftime("%Y-%m-%d %H:%M:%S")}
-            ')
-            
-            # Save the final data
-            echo "$FINAL_DATA" > data/articles.json
-            
-            # Display the generated content for debugging
-            echo "Generated articles with themes and random layout:"
-            cat data/articles.json | jq .
-          else
-            # Fallback: If API didn't return valid JSON, create error message
-            echo '{"error": "Failed to generate articles", "generated_at": "'$(date +%Y-%m-%d' %H:%M:%S)"'}' > data/articles.json
-          fi
+          # Extract and process
+          python3 << 'PYEOF'
+import json, random, datetime
 
-      - name: Commit and push new articles
+try:
+    with open('/tmp/response.json') as f:
+        resp = json.load(f)
+    articles = json.loads(resp['choices'][0]['message']['content'])
+    
+    if not isinstance(articles, list) or len(articles) != 7:
+        raise ValueError(f"Expected 7 articles, got {len(articles) if isinstance(articles, list) else type(articles)}")
+    
+    themes = ['Politique', 'Économie', 'Technologie', 'Santé', 'Culture', 'Sports', 'Société']
+    for i, art in enumerate(articles):
+        art['theme'] = themes[i % len(themes)]
+    
+    ids = [a['id'] for a in articles]
+    random.shuffle(ids)
+    layout = {
+        'lead': ids[0],
+        'featured': ids[1],
+        'article-1': ids[2],
+        'article-2': ids[3],
+        'article-3': ids[4],
+        'article-4': ids[5],
+        'article-5': ids[6]
+    }
+    
+    result = {
+        'articles': articles,
+        'layout': layout,
+        'generated_at': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    }
+    
+    with open('data/articles.json', 'w') as f:
+        json.dump(result, f, ensure_ascii=False, indent=2)
+    
+    print("Successfully generated articles with themes and layout")
+    
+except Exception as e:
+    print(f"Error: {e}")
+    with open('data/articles.json', 'w') as f:
+        json.dump({
+            'error': str(e),
+            'articles': [],
+            'layout': {},
+            'generated_at': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        }, f)
+PYEOF
+          
+          cat data/articles.json | head -50
+
+      - name: Commit
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          
-          # Only commit if articles.json has changed
           git add data/articles.json
-          if git diff --cached --quiet; then
-            echo "No changes to articles.json, skipping commit."
-          else
-            git commit -m "Mise à jour des articles quotidiens avec thèmes - $(date +%Y-%m-%d)"
+          if ! git diff --cached --quiet; then
+            git commit -m "Mise à jour quotidienne - $(date +%Y-%m-%d)"
             git push
           fi
