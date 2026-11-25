@@ -17,13 +17,18 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install jq for JSON processing
+        run: sudo apt-get update && sudo apt-get install -y jq
+
       - name: Generate news articles with Mistral AI
         run: |
           # Create data directory if it doesn't exist
           mkdir -p data
           
+          # Define themes for random assignment
+          THEMES='["Politique", "Économie", "Technologie", "Santé", "Culture", "Sports", "Société", "Agriculture", "Éducation", "Environnement"]'
+          
           # Generate articles using Mistral API
-          # Using mistral-medium for quality Canadian French articles
           ARTICLES_RESPONSE=$(curl -s -X POST "https://api.mistral.ai/v1/chat/completions" \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer ${{ secrets.MISTRAL_API_KEY }}" \
@@ -31,27 +36,62 @@ jobs:
               "model": "mistral-medium",
               "messages": [{
                 "role": "user",
-                "content": "Génère 6 articles de journal pour le Journal de la Métropole en français canadien, style début du 20e siècle. Chaque article doit avoir un format JSON avec : id (lead, 1, 2, featured, 3, 4, 5), title, content (3-4 phrases), byline (Par [Nom], Rédacteur, Agence de Presse, etc.). Sujets : politique locale, affaires, société, technologie, santé, sports. Utilise un français québécois formel. Retourne UNIQUEMENT le JSON, sans autre texte."
+                "content": "Génère exactement 7 articles de journal pour le Journal de la Métropole en français canadien, style début du 20e siècle. Chaque article doit être en format JSON avec : id (lead, 1, 2, featured, 3, 4, 5), title, content (3-4 phrases détaillées), byline. Sujets variés : politique locale, affaires, technologie, santé, culture, sports, société. Utilise un français québécois formel et élégant. Retourne UNIQUEMENT un tableau JSON valide avec les 7 articles, sans autre texte."
               }],
               "temperature": 0.7,
-              "max_tokens": 2000
+              "max_tokens": 2500
             }')
           
           # Extract the content from the API response
           ARTICLES=$(echo "$ARTICLES_RESPONSE" | jq -r '.choices[0].message.content')
           
-          # Validate and save to JSON file
-          # The API should return JSON, so we validate it first
-          if echo "$ARTICLES" | jq empty 2>/dev/null; then
-            echo "$ARTICLES" | jq '{articles: ., generated_at: now | strftime("%Y-%m-%d %H:%M:%S")}' > data/articles.json
+          # Save raw articles to a temporary file
+          echo "$ARTICLES" > /tmp/articles_raw.json
+          
+          # Validate and parse the JSON
+          if jq empty /tmp/articles_raw.json 2>/dev/null; then
+            # Assign random themes to each article
+            ARTICLES_WITH_THEMES=$(jq --argjson themes "$THEMES" '\
+              .[] |= . + {theme: ($themes | .[(length * rand | floor) % length])} |\
+              {articles: .}
+            ' /tmp/articles_raw.json)
+            
+            # Create layout with randomized positions
+            # Get article IDs
+            ARTICLE_IDS=$(echo "$ARTICLES_WITH_THEMES" | jq -r '.articles[].id')
+            
+            # Shuffle the IDs for random layout
+            SHUFFLED_IDS=$(echo "$ARTICLE_IDS" | tr ' ' '\n' | shuf | tr '\n' ' ' | sed 's/ $//')
+            
+            # Create layout mapping
+            LAYOUT=$(jq -n --arg ids "$SHUFFLED_IDS" '\
+              $ids | split(" ") |\
+              {
+                "lead": .[0],\
+                "featured": .[1],\
+                "article-1": .[2],\
+                "article-2": .[3],\
+                "article-3": .[4],\
+                "article-4": .[5],\
+                "article-5": .[6]
+              }
+            ')
+            
+            # Combine articles with themes and layout
+            FINAL_DATA=$(jq -n --argjson articles "$ARTICLES_WITH_THEMES" --argjson layout "$LAYOUT" '\
+              $articles | . + {layout: $layout, generated_at: now | strftime("%Y-%m-%d %H:%M:%S")}
+            ')
+            
+            # Save the final data
+            echo "$FINAL_DATA" > data/articles.json
+            
+            # Display the generated content for debugging
+            echo "Generated articles with themes and random layout:"
+            cat data/articles.json | jq .
           else
             # Fallback: If API didn't return valid JSON, create error message
             echo '{"error": "Failed to generate articles", "generated_at": "'$(date +%Y-%m-%d' %H:%M:%S)"'}' > data/articles.json
           fi
-          
-          # Display the generated content for debugging
-          echo "Generated articles:"
-          cat data/articles.json | jq .
 
       - name: Commit and push new articles
         run: |
@@ -63,6 +103,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to articles.json, skipping commit."
           else
-            git commit -m "Mise à jour des articles quotidiens - $(date +%Y-%m-%d)"
+            git commit -m "Mise à jour des articles quotidiens avec thèmes - $(date +%Y-%m-%d)"
             git push
           fi

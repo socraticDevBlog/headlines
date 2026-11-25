@@ -1,7 +1,7 @@
 /**
  * Journal de la Métropole - Journal du début du 20e siècle
  * Charge les articles depuis un fichier JSON statique généré par GitHub Actions
- * Inclut des espaces publicitaires pour la génération de revenus
+ * Inclut des espaces publicitaires et des thèmes pour chaque article
  */
 
 // ============================================
@@ -35,56 +35,70 @@ function displayCurrentDate() {
 // ============================================
 
 /**
- * Charge les articles depuis le fichier JSON statique
+ * Charge les articles et le layout depuis le fichier JSON statique
  * Généré quotidiennement par GitHub Actions
  */
-async function loadArticles() {
+async function loadData() {
     try {
         const response = await fetch('data/articles.json');
         if (!response.ok) {
             throw new Error('Fichier articles.json introuvable');
         }
         const data = await response.json();
-        return data.articles;
+        return data;
     } catch (error) {
-        console.error('Erreur lors du chargement des articles:', error);
-        // Retourner des articles par défaut en cas d'erreur
-        return getDefaultArticles();
+        console.error('Erreur lors du chargement des données:', error);
+        // Retourner des données par défaut en cas d'erreur
+        return getDefaultData();
     }
 }
 
 /**
- * Articles par défaut en cas d'erreur de chargement
+ * Données par défaut en cas d'erreur de chargement
  */
-function getDefaultArticles() {
-    return [
-        {
-            id: 'lead',
-            title: 'Chargement des articles...',
-            content: 'Veuillez rafraîchir la page.',
-            byline: 'Journal de la Métropole',
-            date: new Date().toLocaleDateString('fr-CA')
-        }
-    ];
+function getDefaultData() {
+    return {
+        articles: [
+            {
+                id: 'lead',
+                title: 'Chargement des articles...',
+                content: 'Veuillez rafraîchir la page.',
+                byline: 'Journal de la Métropole',
+                theme: ''
+            }
+        ],
+        layout: { lead: 'lead' }
+    };
 }
 
 // ============================================
-// AFFICHER LES ARTICLES
+// AFFICHER LES ARTICLES AVEC LEURS THÈMES
 // ============================================
 
 function renderArticle(article, containerId) {
     const container = document.getElementById(containerId);
     if (!container || !article) return;
 
-    // Effacer le texte de chargement
-    const titleElement = container.querySelector('.article-title');
-    const contentElement = container.querySelector('.article-content');
-    const bylineElement = container.querySelector('.article-byline');
-    const dateElement = container.querySelector('.article-date');
+    // Afficher le thème
+    const themeElement = container.querySelector('.article-theme');
+    if (themeElement && article.theme) {
+        themeElement.textContent = `📌 ${article.theme}`;
+    }
 
+    // Afficher le titre
+    const titleElement = container.querySelector('.article-title');
     if (titleElement) titleElement.textContent = article.title;
-    if (contentElement) contentElement.textContent = article.content;
+
+    // Afficher la signature
+    const bylineElement = container.querySelector('.article-byline');
     if (bylineElement) bylineElement.textContent = article.byline;
+
+    // Afficher le contenu
+    const contentElement = container.querySelector('.article-content');
+    if (contentElement) contentElement.textContent = article.content;
+
+    // Afficher la date
+    const dateElement = container.querySelector('.article-date');
     if (dateElement) dateElement.textContent = article.date || '';
 }
 
@@ -92,7 +106,11 @@ function renderFeaturedArticle(article) {
     const titleElement = document.getElementById('featured-title');
     const contentElement = document.getElementById('featured-content');
     const bylineElement = document.getElementById('featured-byline');
+    const themeElement = document.querySelector('#featured-article .article-theme');
 
+    if (themeElement && article.theme) {
+        themeElement.textContent = `📌 ${article.theme}`;
+    }
     if (titleElement) titleElement.textContent = article.title;
     if (contentElement) contentElement.textContent = article.content;
     if (bylineElement) bylineElement.textContent = article.byline;
@@ -140,6 +158,31 @@ function loadGoogleAds() {
 */
 
 // ============================================
+// APPLIQUER LE LAYOUT (POSITIONS DES ARTICLES)
+// ============================================
+
+function applyLayout(data) {
+    if (!data.layout) return;
+
+    // Récupérer tous les articles
+    const articles = data.articles || [];
+    const layout = data.layout;
+
+    // Mapper les positions aux IDs d'articles
+    for (const [position, articleId] of Object.entries(layout)) {
+        const article = articles.find(a => a.id === articleId);
+        if (article) {
+            // Utiliser renderArticle pour chaque position
+            if (position === 'featured') {
+                renderFeaturedArticle(article);
+            } else {
+                renderArticle(article, position);
+            }
+        }
+    }
+}
+
+// ============================================
 // INITIALISER LE SITE WEB
 // ============================================
 
@@ -148,23 +191,18 @@ async function initializeWebsite() {
         // Afficher la date actuelle
         displayCurrentDate();
 
-        // Charger les articles depuis le fichier JSON
-        const articles = await loadArticles();
+        // Charger les données (articles + layout)
+        const data = await loadData();
 
-        // Afficher les articles
-        renderArticle(articles.find(a => a.id === 'lead'), 'lead-article');
-        renderArticle(articles.find(a => a.id === '1'), 'article-1');
-        renderArticle(articles.find(a => a.id === '2'), 'article-2');
-        renderFeaturedArticle(articles.find(a => a.id === 'featured'));
-        renderArticle(articles.find(a => a.id === '3'), 'article-3');
-        renderArticle(articles.find(a => a.id === '4'), 'article-4');
-        renderArticle(articles.find(a => a.id === '5'), 'article-5');
+        // Appliquer le layout avec les thèmes
+        applyLayout(data);
 
         // Initialiser les espaces publicitaires
         initializeAdSlots();
 
         console.log('Journal de la Métropole initialisé avec succès');
-        console.log('Articles chargés depuis:', new Date().toISOString());
+        console.log('Articles chargés:', data.articles ? data.articles.length : 0);
+        console.log('Thèmes:', data.articles ? data.articles.map(a => a.theme).join(', ') : '');
     } catch (error) {
         console.error('Erreur lors de l\'initialisation du site:', error);
         // Afficher l'erreur à l'utilisateur

@@ -256,3 +256,17 @@ body {
 .ad-slot + .article {
     border-top: 1px solid var(--rule-color);
 }
+
+/* Theme styling */
+.article-theme {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin: 0 0 8px;
+    padding: 4px 8px;
+    background-color: var(--secondary-bg);
+    border-left: 3px solid var(--accent-color);
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
