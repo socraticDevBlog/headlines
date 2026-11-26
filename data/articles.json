@@ -2,62 +2,62 @@
   "articles": [
     {
       "id": "lead",
-      "title": "Le Premier Ministre annonce de nouvelles réformes fiscales",
-      "content": "Dans un discours prononcé hier à l'Assemblée législative, le Premier Ministre a dévoilé un ensemble de mesures visant à allégé le fardeau fiscal des classes moyennes. Ces réformes, qui devraient entrer en vigueur dès le printemps prochain, incluent une réduction des taxes sur les petits commerces ainsi qu'une augmentation des subventions agricoles. Les opposants critiquent déjà ces propositions, les jugeant insuffisantes pour répondre aux besoins urgents de la population. Les débats parlementaires s'annoncent donc houleux dans les prochaines semaines.",
-      "byline": "Par Édouard Laurent, notre correspondant politique à Québec",
+      "title": "Le Premier Ministre annonce des réformes audacieuses pour moderniser l'administration publique",
+      "content": "Dans un discours prononcé hier à l'Assemblée législative, le Premier Ministre a dévoilé un plan ambitieux visant à simplifier les procédures gouvernementales et à réduire la bureaucratie. Ces mesures, selon lui, permettront d'accélérer les services aux citoyens tout en maîtrisant les dépenses de l'État. Les partis d'opposition, bien que prudents, ont salué l'initiative, tout en exigeant des garanties sur son financement. Les détails concrets seront présentés lors de la prochaine session parlementaire.",
+      "byline": "Par Édouard Lambert, notre correspondant politique à Québec",
       "theme": "Politique"
     },
     {
       "id": "1",
-      "title": "Boom industriel dans l'est du pays : les usines tournent à plein régime",
-      "content": "Les dernières statistiques révèlent une croissance sans précédent dans le secteur manufacturier de l'est du Canada, avec une hausse de 15% de la production depuis le début de l'année. Les usines de textile et de machinerie lourde, en particulier, peinent à suivre la demande croissante, forçant plusieurs entreprises à embaucher massivement. Les économistes soulignent que cette expansion est en grande partie attribuable aux investissements étrangers et à l'ouverture de nouveaux marchés. Cependant, certains craignent que cette croissance rapide ne mène à une surproduction.",
-      "byline": "Par Jean-Baptiste Morel, rédacteur économique",
+      "title": "Hausse des investissements étrangers dans les manufactures de Montréal",
+      "content": "Les dernières données de la Chambre de commerce révèlent une augmentation de 15 % des capitaux étrangers injectés dans les usines montréalaises au cours du dernier trimestre. Cette tendance s'explique par la stabilité économique de la région et les incitatifs fiscaux offerts aux industriels. Les secteurs du textile et de la métallurgie sont particulièrement touchés par cet afflux. Les experts prévoient une création d'emplois significative d'ici la fin de l'année.",
+      "byline": "Par Jean-Baptiste Moreau, chroniqueur économique",
       "theme": "Économie"
     },
     {
       "id": "2",
-      "title": "Le télégraphe sans fil fait son apparition à Montréal",
-      "content": "Une démonstration publique du tout nouveau système de télégraphie sans fil a eu lieu hier au parc La Fontaine, attirant une foule de curieux. Cette technologie révolutionnaire, développée par un inventeur local, permet d'envoyer des messages à plusieurs kilomètres de distance sans l'usage de câbles. Les autorités postales étudient déjà la possibilité d'intégrer ce système pour améliorer les communications entre les villes. Plusieurs entrepreneurs voient là une opportunité en or pour moderniser les affaires.",
-      "byline": "Par Henri Dubois, spécialiste des innovations technologiques",
+      "title": "L'électricité arrive enfin dans les campagnes éloignées grâce à de nouvelles lignes",
+      "content": "Le projet d'électrification rurale, lancé il y a deux ans par la compagnie Hydro-Québec, porte ses premiers fruits. Plusieurs villages des Laurentides et de l'Estrie bénéficient désormais d'un accès régulier au courant électrique, transformant radicalement la vie quotidienne des habitants. Les fermiers peuvent désormais utiliser des machines modernes, tandis que les écoles et les hôpitaux profitent de conditions améliorées. Les travaux se poursuivent pour étendre le réseau à d'autres régions.",
+      "byline": "Par Louis Tremblay, spécialiste des sciences et techniques",
       "theme": "Technologie"
     },
     {
       "id": "featured",
-      "title": "Épidémie de grippe : les hôpitaux de la métropole sous pression",
-      "content": "Une vague de grippe particulièrement virulente frappe actuellement la région métropolitaine, submergeant les hôpitaux et les cliniques locales. Les médecins appellent la population à prendre des précautions supplémentaires, notamment en évitant les grands rassemblements et en maintenant une hygiène rigoureuse. Les écoles de plusieurs quartiers ont dû fermer temporairement leurs portes pour limiter la propagation du virus. Les autorités sanitaires assurent que des mesures sont en place pour contenir l'épidémie.",
-      "byline": "Par Marie-Claire Tremblay, correspondante médicale",
+      "title": "Une épidémie de grippe frappe durement la ville de Québec",
+      "content": "Les autorités sanitaires ont confirmé une recrudescence alarmante des cas de grippe saisonnière, avec plus de 500 nouveaux malades recensés cette semaine. Les hôpitaux de la capitale sont débordés, et des mesures d'urgence ont été mises en place pour isoler les patients les plus gravement atteints. Les médecins recommandent vivement à la population de se faire vacciner et d'éviter les lieux publics bondés. Une campagne de sensibilisation sera lancée dès lundi.",
+      "byline": "Par Dr. Marie-Claude Dubois, médecin hygiéniste",
       "theme": "Santé"
     },
     {
       "id": "3",
-      "title": "Le Théâtre Royal présente une nouvelle pièce acclamée par la critique",
-      "content": "La pièce « Les Ombres du Passé », écrite par un jeune dramaturge montrealais, a connu un succès retentissant lors de sa première au Théâtre Royal. Les critiques louent la profondeur des personnages et la qualité des dialogues, qualifiant l'œuvre de chef-d'œuvre du théâtre canadien. Les billets pour les prochaines représentations se vendent comme des petits pains, et plusieurs personnalités influentes ont déjà réservé leur place. Cette production marque sans doute un tournant dans la scène culturelle locale.",
-      "byline": "Par Françoise Lefèvre, chroniquese culturelle",
+      "title": "Le Théâtre du Nouveau-Monde présente une pièce révolutionnaire sur la condition ouvrière",
+      "content": "La troupe du Théâtre du Nouveau-Monde a créé l'événement hier soir avec la première de *Les Ombres de l'atelier*, une pièce de théâtre dénonçant les conditions de travail dans les manufactures. Écrit par un ancien ouvrier devenu dramaturge, le spectacle a été ovationné par un public ému. Les critiques soulignent la force du texte et la performance exceptionnelle des acteurs. La pièce sera jouée pendant tout le mois de décembre.",
+      "byline": "Par Claire Saint-Laurent, critique culturelle",
       "theme": "Culture"
     },
     {
       "id": "4",
-      "title": "Les Canadiens de Montréal triomphent lors du match contre Ottawa",
-      "content": "Dans un match palpitant qui a tenu les spectateurs en haleine jusqu'à la dernière minute, les Canadiens de Montréal ont remporté une victoire écrasante de 5 à 2 contre l'équipe d'Ottawa. Le joueur étoile, Joseph Richard, a marqué trois des cinq buts, confirmant une fois de plus son statut de légende vivante du hockey. Les partisans, en liesse, ont envahi la patinoire à la fin de la partie pour célébrer ce triomphe. Cette victoire place les Canadiens en tête du classement de la ligue.",
-      "byline": "Par Louis Gagnon, envoyée spécial au Forum",
+      "title": "Les Canadiens de Montréal remportent une victoire historique contre les Sénateurs d'Ottawa",
+      "content": "Dans un match à couper le souffle, les Canadiens de Montréal ont écrasé leurs rivaux ottaviens par un score de 7 à 2, hier soir au Forum. Le gardien Georges Vézina a réalisé une performance héroïque, repoussant pas moins de 35 tirs. Les partisans, en liesse, ont envahi la patinoire à la fin de la rencontre pour célébrer cette victoire qui propulse l'équipe en tête du championnat. Le prochain affrontement entre les deux clubs est prévu pour le 15 décembre.",
+      "byline": "Par Henri Rivard, envoyée spéciale au Forum",
       "theme": "Sports"
     },
     {
       "id": "5",
-      "title": "Débat public sur l'éducation des jeunes filles dans les écoles primaires",
-      "content": "Un vif débat agite actuellement la société québécoise concernant l'accès des jeunes filles à l'éducation primaire, certains conservateurs estimant que leur place est davantage au foyer. Cependant, les progressistes, soutenus par plusieurs enseignants et parents, défendent ardemment le droit des filles à recevoir la même instruction que les garçons. Une pétition circule déjà pour exiger que le gouvernement prenne position sur cette question. Ce sujet divise profondément l'opinion publique et promettra encore de nombreux échanges animés.",
-      "byline": "Par Claire Martin, correspondante sociale",
+      "title": "La condition des femmes au travail fait débat lors d'une conférence à Montréal",
+      "content": "Une conférence organisée par la Ligue des droits des femmes a mis en lumière les inégalités persistantes entre les hommes et les femmes dans le milieu professionnel. Les intervenantes ont dénoncé les écarts salariaux et le manque d'opportunités de promotion pour les travailleuses. Plusieurs propositions ont été avancées, dont la création de syndicats féminins et l'adoption de lois protégeant les droits des employées. Le débat a suscité un vif intérêt dans la presse et parmi le public.",
+      "byline": "Par Sophie Gagnon, reporter sociale",
       "theme": "Société"
     }
   ],
   "layout": {
-    "lead": "4",
-    "featured": "2",
-    "article-1": "lead",
-    "article-2": "5",
+    "lead": "5",
+    "featured": "featured",
+    "article-1": "4",
+    "article-2": "2",
     "article-3": "3",
     "article-4": "1",
-    "article-5": "featured"
+    "article-5": "lead"
   },
-  "generated_at": "2026-11-26 00:52:10"
+  "generated_at": "2026-11-26 19:25:10"
 }
