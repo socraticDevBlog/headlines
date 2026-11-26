@@ -17,53 +17,53 @@ payload = {
     "model": "mistral-medium",
     "messages": [{
         "role": "user",
-        "content": "Generate exactly 7 newspaper articles for Journal de la Métropole in Canadian French, early 20th century style. Each article must be a JSON object with: id (one of: lead, 1, 2, featured, 3, 4, 5), title, content (3-4 detailed sentences in Canadian French), byline (in French). Return ONLY a valid JSON array with exactly 7 articles, no extra text, no markdown, no code blocks."
+        "content": "Génère exactement 7 articles de journal pour le Journal de la Métropole en français canadien, style début du 20e siècle. Chaque article doit être un objet JSON avec : id (l'un de : lead, 1, 2, featured, 3, 4, 5), title, content (3-4 phrases détaillées en français québécois formel), byline (en français). Retourne UNIQUEMENT un tableau JSON valide avec exactement 7 articles, sans texte supplémentaire, sans markdown, sans blocs de code."
     }],
     "temperature": 0.7,
     "max_tokens": 2500
 }
 
-# Fallback articles in case API fails
+# Fallback articles in case API fails (in Canadian French)
 FALLBACK_ARTICLES = [
     {
         "id": "lead",
-        "title": "La Métropole Transformée : Le Conseil Municipal Approuve un Plan de Modernisation Ambitieux",
-        "content": "Le Conseil municipal a voté hier à l'unanimité pour approuver un vaste plan de modernisation qui apportera l'éclairage électrique public à tous les quartiers d'ici la fin de la décennie. \"C'est une nouvelle ère pour notre grande ville,\" a déclaré le maire Théodore Whitmore. Le plan comprend également l'extension du service de tramway et la construction d'un nouvel hôtel de ville sur la place centrale.",
-        "byline": "Par Harold Winslow, Correspondant Principal"
+        "title": "La Métropole se modernise : éclairage électrique pour tous les quartiers",
+        "content": "Le Conseil municipal a voté hier à l'unanimité pour approuver un vaste plan de modernisation qui apportera l'éclairage électrique public à tous les quartiers d'ici la fin de la décennie. \"C'est une nouvelle ère pour notre grande ville,\" a déclaré le maire Théodore Lavoie. Le plan comprend également l'extension du service de tramway et la construction d'un nouvel hôtel de ville sur la place centrale.",
+        "byline": "Par Henri Laurendeau, Correspondant Principal"
     },
     {
         "id": "1",
-        "title": "Magnat Industriel Annonce une Nouvelle Usine en Banlieue",
-        "content": "Le puissant industriel Charlesworth Sterling a révélé hier ses plans pour une nouvelle installation de fabrication en banlieue de Montréal. L'usine, d'une valeur de 2 millions de dollars, devrait créer plus de cinq cents nouveaux emplois et stimuler considérablement l'économie locale. Les travaux devraient commencer au printemps prochain.",
-        "byline": "Par Margaret Holloway, Rédactrice Économique"
+        "title": "Magnat industriel annonce une nouvelle usine en banlieue",
+        "content": "Le puissant industriel Charles Tremblay a révélé hier ses plans pour une nouvelle installation de fabrication en banlieue de Montréal. L'usine, d'une valeur de 2 millions de dollars, devrait créer plus de cinq cents nouveaux emplois et stimuler considérablement l'économie locale. Les travaux devraient commencer au printemps prochain.",
+        "byline": "Par Marguerite Leblanc, Rédactrice Économique"
     },
     {
         "id": "2",
-        "title": "Aviateur Québécois Établit un Nouveau Record de Distance en Vol",
-        "content": "L'audacieuse aviatrice Amélie Fairchild a de nouveau fait la une en battant le record de distance pour un vol sans escale. Son voyage de 2 100 milles a été accompli en 14 heures à bord de son fidèle biplan, le \"Esprit de l'Aventure\". Mlle Fairchild a déclaré qu'elle prévoyait tenter une traversée transatlantique au printemps prochain.",
+        "title": "Aviateur québécois établit un nouveau record de distance en vol",
+        "content": "L'audacieuse aviatrice Amélie Bouchard a de nouveau fait la une en battant le record de distance pour un vol sans escale. Son voyage de 2 100 milles a été accompli en 14 heures à bord de son fidèle biplan, le \"Esprit de l'Aventure\". Mlle Bouchard a déclaré qu'elle prévoyait tenter une traversée transatlantique au printemps prochain.",
         "byline": "Agence de Presse"
     },
     {
         "id": "featured",
-        "title": "Le Grand Débat : Progrès versus Tradition à la Métropole",
+        "title": "Le grand débat : progrès versus tradition à la Métropole",
         "content": "Notre ville se trouve à la croisée des chemins. Alors que nous embrassons les merveilles de l'âge moderne avec l'électricité et les automobiles, nous ne devons pas oublier les valeurs et les traditions qui ont fait de nous ce que nous sommes. La nouvelle génération recherche le changement à un rythme sans précédent, tandis que les aînés prônent la patience et la réflexion.",
-        "byline": "Éditorial par Edmund Blackwood"
+        "byline": "Éditorial par Edmund Bertrand"
     },
     {
         "id": "3",
-        "title": "Agriculture Locale : Récolte Abondante Prévue pour l'Automne",
-        "content": "Les agriculteurs de toute la région de la Métropole signalent une saison de croissance exceptionnellement prometteuse. L'extension agricole du comté prévoit une récolte de blé qui pourrait dépasser tous les records précédents. \"Les pluies ont été opportunes et le soleil généreux,\" a souligné l'agriculteur Jean Thistlewaite.",
-        "byline": "Par Thomas Greenleaf, Correspondant Agricole"
+        "title": "Agriculture locale : récolte abondante prévue pour l'automne",
+        "content": "Les agriculteurs de toute la région de la Métropole signalent une saison de croissance exceptionnellement prometteuse. L'extension agricole du comté prévoit une récolte de blé qui pourrait dépasser tous les records précédents. \"Les pluies ont été opportunes et le soleil généreux,\" a souligné l'agriculteur Jean Thériault.",
+        "byline": "Par Thomas Lamontagne, Correspondant Agricole"
     },
     {
         "id": "4",
-        "title": "Merveille Médicale : Un Nouveau Traitement Contre la Tuberculose Montre des Résultats Prometteurs",
-        "content": "Le Dr Éléonore Whitmore de l'Hôpital Général de la Métropole a annoncé hier le succès des essais cliniques d'un nouveau traitement contre la tuberculose qui tourmente notre population depuis des décennies. Les premiers résultats montrent une amélioration remarquable.",
-        "byline": "Par Helen Fairfax, Rédactrice Santé"
+        "title": "Merveille médicale : un nouveau traitement contre la tuberculose montre des résultats prometteurs",
+        "content": "Le Dr Éléonore Tremblay de l'Hôpital Général de la Métropole a annoncé hier le succès des essais cliniques d'un nouveau traitement contre la tuberculose qui tourmente notre population depuis des décennies. Les premiers résultats montrent une amélioration remarquable.",
+        "byline": "Par Hélène Lapierre, Rédactrice Santé"
     },
     {
         "id": "5",
-        "title": "Société : Grand Bal de Charité au Waldorf Attire la Fine Fleur de la Métropole",
+        "title": "Société : grand bal de charité au Waldorf attire la fine fleur de la Métropole",
         "content": "L'événement social de la saison a eu lieu hier soir à l'hôtel Waldorf, où la fine fleur de la société s'est réunie pour le bal de charité annuel. Plus de cinq cents invités distingués ont assisté à l'événement.",
         "byline": "Correspondant Société"
     }
