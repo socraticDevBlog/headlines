@@ -1,6 +1,63 @@
 {
-  "error": "Expecting value: line 1 column 1 (char 0)",
-  "articles": [],
-  "layout": {},
-  "generated_at": "2026-11-26 00:13:48"
+  "articles": [
+    {
+      "id": "lead",
+      "title": "Le grand incendie ravage le quartier Saint-Roch",
+      "content": "Un incendie d'une ampleur sans précédent a dévasté hier soir une partie importante du quartier Saint-Roch, à Québec. Les flammes, attisées par un vent violent, ont réduit en cendres plus d'une vingtaine de bâtiments, dont plusieurs résidences et commerces. Les pompiers, venus en renfort de toute la région, ont lutté toute la nuit pour maîtriser le sinistre. Les autorités estiment que des centaines de familles se retrouvent sans abri.",
+      "byline": "par Henri Laurent, notre envoyée spécial",
+      "theme": "Politique"
+    },
+    {
+      "id": "1",
+      "title": "La grève des ouvriers du port s'intensifie",
+      "content": "Les tensions montent au port de Montréal alors que les ouvriers, en grève depuis une semaine, refusent de reprendre le travail sans garanties salariales. Les patrons des compagnies maritimes menacent de licencier les grévistes et d'engager de nouveaux travailleurs. Des heurts violents ont éclaté hier entre manifestants et forces de l'ordre, faisant plusieurs blessés. La situation préoccupe les autorités municipales.",
+      "byline": "par Jean-Paul Morel",
+      "theme": "Économie"
+    },
+    {
+      "id": "2",
+      "title": "Nouveau pont en construction à Trois-Rivières",
+      "content": "Les travaux du nouveau pont sur le fleuve Saint-Laurent, reliant Trois-Rivières à la rive sud, ont officiellement commencé hier. Ce projet, attendu depuis des années, vise à faciliter les déplacements et à stimuler le commerce régional. Les ingénieurs estiment que l'ouvrage, d'une longueur de près de 500 mètres, sera achevé d'ici deux ans. Les citoyens expriment déjà leur enthousiasme pour cette avancée majeure.",
+      "byline": "par Marie-Claire Dubois",
+      "theme": "Technologie"
+    },
+    {
+      "id": "featured",
+      "title": "Le premier cinéma de la ville ouvre ses portes",
+      "content": "C'est sous une pluie de confettis et au son des fanfares que le Cinéma Impérial a inauguré hier soir ses portes au cœur de Montréal. Ce nouvel établissement, doté d'une salle de 500 places, promet de révolutionner les loisirs des citoyens en projetant les derniers films en provenance d'Europe et d'Amérique. Le maire lui-même était présent pour couper le ruban, saluant cette initiative comme un symbole de modernité.",
+      "byline": "par Élise Tremblay",
+      "theme": "Santé"
+    },
+    {
+      "id": "3",
+      "title": "Un mystérieux vol à la Banque Nationale",
+      "content": "La police de Québec est à la recherche de malfaiteurs ayant dérobé une somme importante à la succursale de la Banque Nationale située rue Saint-Jean. Les voleurs, masqués et armés, ont agi avec une précision inquiétante, laissant les employés et clients sous le choc. Aucune piste sérieuse n'a encore été identifiée, mais les autorités assurent que l'enquête est en cours. Les citoyens sont invités à signaler tout comportement suspect.",
+      "byline": "par Pierre Lambert",
+      "theme": "Culture"
+    },
+    {
+      "id": "4",
+      "title": "La fête de la Saint-Jean-Baptiste en préparation",
+      "content": "Les organisateurs de la fête de la Saint-Jean-Baptiste annoncèrent hier les détails des célébrations prévues pour le 24 juin prochain. Au programme : défilés colorés, concerts de musique traditionnelle et feux d'artifice spectaculaires sur les rives du fleuve. Les préparatifs battent leur plein, et les citoyens sont invités à participer aux répétitions des danses folkloriques. Cette année, l'événement promet d'être plus grandiose que jamais.",
+      "byline": "par Françoise Lavoie",
+      "theme": "Sports"
+    },
+    {
+      "id": "5",
+      "title": "Découverte archéologique majeure à Gaspé",
+      "content": "Une équipe d'archéologues a mis au jour, près de Gaspé, les vestiges d'un village amérindien datant de plus de mille ans. Les artefacts découverts, dont des poteries et des outils en pierre, offrent un éclairage nouveau sur les premières nations ayant habité la région. Les spécialistes estiment que ce site pourrait être l'un des plus importants jamais découverts au Québec. Une exposition temporaire est prévue pour présenter ces trésors au public.",
+      "byline": "par Thomas Bernier",
+      "theme": "Société"
+    }
+  ],
+  "layout": {
+    "lead": "lead",
+    "featured": "3",
+    "article-1": "featured",
+    "article-2": "4",
+    "article-3": "1",
+    "article-4": "2",
+    "article-5": "5"
+  },
+  "generated_at": "2026-11-26 00:18:16"
 }
