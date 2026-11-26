@@ -1,63 +1,6 @@
 {
-  "articles": [
-    {
-      "id": "lead",
-      "title": "La Métropole Transformée : Le Conseil Municipal Approuve un Plan de Modernisation Ambitieux",
-      "content": "Le Conseil municipal a voté hier à l'unanimité pour approuver un vaste plan de modernisation qui apportera l'éclairage électrique public à tous les quartiers d'ici la fin de la décennie. \"C'est une nouvelle ère pour notre grande ville,\" a déclaré le maire Théodore Whitmore. Le plan comprend également l'extension du service de tramway et la construction d'un nouvel hôtel de ville sur la place centrale.",
-      "byline": "Par Harold Winslow, Correspondant Principal",
-      "theme": "Politique"
-    },
-    {
-      "id": "1",
-      "title": "Magnat Industriel Annonce une Nouvelle Usine en Banlieue",
-      "content": "Le puissant industriel Charlesworth Sterling a révélé hier ses plans pour une nouvelle installation de fabrication en banlieue de Montréal. L'usine, d'une valeur de 2 millions de dollars, devrait créer plus de cinq cents nouveaux emplois et stimuler considérablement l'économie locale. Les travaux devraient commencer au printemps prochain.",
-      "byline": "Par Margaret Holloway, Rédactrice Économique",
-      "theme": "Économie"
-    },
-    {
-      "id": "2",
-      "title": "Aviateur Québécois Établit un Nouveau Record de Distance en Vol",
-      "content": "L'audacieuse aviatrice Amélie Fairchild a de nouveau fait la une en battant le record de distance pour un vol sans escale. Son voyage de 2 100 milles a été accompli en 14 heures à bord de son fidèle biplan, le \"Esprit de l'Aventure\". Mlle Fairchild a déclaré qu'elle prévoyait tenter une traversée transatlantique au printemps prochain.",
-      "byline": "Agence de Presse",
-      "theme": "Technologie"
-    },
-    {
-      "id": "featured",
-      "title": "Le Grand Débat : Progrès versus Tradition à la Métropole",
-      "content": "Notre ville se trouve à la croisée des chemins. Alors que nous embrassons les merveilles de l'âge moderne avec l'électricité et les automobiles, nous ne devons pas oublier les valeurs et les traditions qui ont fait de nous ce que nous sommes. La nouvelle génération recherche le changement à un rythme sans précédent, tandis que les aînés prônent la patience et la réflexion. Dans cet article spécial, nous examinons les deux côtés de cette grande division.",
-      "byline": "Éditorial par Edmund Blackwood",
-      "theme": "Société"
-    },
-    {
-      "id": "3",
-      "title": "Agriculture Locale : Récolte Abondante Prévue pour l'Automne",
-      "content": "Les agriculteurs de toute la région de la Métropole signalent une saison de croissance exceptionnellement prometteuse. L'extension agricole du comté prévoit une récolte de blé qui pourrait dépasser tous les records précédents. \"Les pluies ont été opportunes et le soleil généreux,\" a souligné l'agriculteur Jean Thistlewaite, propriétaire de la ferme du Mont-Royal.",
-      "byline": "Par Thomas Greenleaf, Correspondant Agricole",
-      "theme": "Agriculture"
-    },
-    {
-      "id": "4",
-      "title": "Merveille Médicale : Un Nouveau Traitement Contre la Tuberculose Montre des Résultats Prometteurs",
-      "content": "Le Dr Éléonore Whitmore de l'Hôpital Général de la Métropole a annoncé hier le succès des essais cliniques d'un nouveau traitement contre la tuberculose qui tourmente notre population depuis des décennies. Les premiers résultats montrent une amélioration remarquable des patients, offrant un nouvel espoir à ceux qui souffrent de cette maladie redoutée.",
-      "byline": "Par Helen Fairfax, Rédactrice Santé",
-      "theme": "Santé"
-    },
-    {
-      "id": "5",
-      "title": "Société : Grand Bal de Charité au Waldorf Attire la Fine Fleur de la Métropole",
-      "content": "L'événement social de la saison a eu lieu hier soir à l'hôtel Waldorf, où la fine fleur de la société métropolitaine s'est réunie pour le bal de charité annuel. Plus de cinq cents invités distingués ont assisté à l'événement, dont les recettes bénéficieront au Fonds de l'Hôpital pour Enfants. La soirée a été marquée par de la musique, des danses et un festin somptueux qui s'est poursuivi bien après minuit.",
-      "byline": "Correspondant Société",
-      "theme": "Culture"
-    }
-  ],
-  "generated_at": "2024-11-25 06:00:00",
-  "layout": {
-    "lead": "lead",
-    "featured": "featured",
-    "article-1": "1",
-    "article-2": "2",
-    "article-3": "3",
-    "article-4": "4",
-    "article-5": "5"
-  }
+  "error": "Expecting value: line 1 column 1 (char 0)",
+  "articles": [],
+  "layout": {},
+  "generated_at": "2026-11-26 00:13:48"
 }
