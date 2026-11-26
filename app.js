@@ -48,6 +48,22 @@ async function loadData() {
         return data;
     } catch (error) {
         console.error('Erreur lors du chargement des données:', error);
+        
+        // Si nous sommes sur file://, essayer avec un chemin absolu
+        if (window.location.protocol === 'file:') {
+            try {
+                // Pour Mac/Linux, essayer le chemin absolu
+                const absPath = '/Users/m/git/headlines/data/articles.json';
+                const fileResponse = await fetch('file://' + absPath);
+                if (fileResponse.ok) {
+                    const data = await fileResponse.json();
+                    return data;
+                }
+            } catch (fileError) {
+                console.error('Erreur chargement file://:', fileError);
+            }
+        }
+        
         // Retourner des données par défaut en cas d'erreur
         return getDefaultData();
     }
@@ -61,8 +77,8 @@ function getDefaultData() {
         articles: [
             {
                 id: 'lead',
-                title: 'Chargement des articles...',
-                content: 'Veuillez rafraîchir la page.',
+                title: '⚠️ Impossible de charger les articles',
+                content: 'Ouvrez cette page via un serveur local. Exécutez: python3 -m http.server 8000 puis accédez à http://localhost:8000',
                 byline: 'Journal de la Métropole',
                 theme: ''
             }
@@ -205,6 +221,9 @@ async function initializeWebsite() {
         console.log('Thèmes:', data.articles ? data.articles.map(a => a.theme).join(', ') : '');
     } catch (error) {
         console.error('Erreur lors de l\'initialisation du site:', error);
+        console.log('%c⚠️  Pour tester ce site, utilisez un serveur local:', 'color: red; font-size: 16px;');
+        console.log('%c   python3 -m http.server 8000', 'color: blue;');
+        console.log('%c   Puis ouvrez: http://localhost:8000', 'color: blue;');
         // Afficher l'erreur à l'utilisateur
         document.querySelector('.display-date').textContent = 'ERREUR DE CHARGEMENT';
     }
