@@ -17,64 +17,70 @@ payload = {
     "model": "mistral-medium",
     "messages": [{
         "role": "user",
-        "content": "Génère exactement 7 articles de journal pour le Journal de la Métropole en français canadien, style début du 20e siècle. Chaque article doit être un objet JSON avec : id (l'un de : lead, 1, 2, featured, 3, 4, 5), title, content (3-4 phrases détaillées en français québécois formel), byline (en français). Retourne UNIQUEMENT un tableau JSON valide avec exactement 7 articles, sans texte supplémentaire, sans markdown, sans blocs de code."
+        "content": "Génère exactement 7 articles de journal pour le Journal de la Métropole en français canadien, style début du 20e siècle. Utilise EXACTEMENT ces 7 catégories/thèmes, une seule par article : Politique, Économie, Technologie, Santé, Culture, Sports, Société. Chaque article doit correspondre parfaitement à sa catégorie. Chaque article doit être un objet JSON avec : id (l'un de : lead, 1, 2, featured, 3, 4, 5), title, content (3-4 phrases détaillées en français québécois formel), byline (en français), theme (la catégorie correspondante). Assure-toi que le thème correspond exactement au contenu de l'article. Retourne UNIQUEMENT un tableau JSON valide avec exactement 7 articles, sans texte supplémentaire, sans markdown, sans blocs de code."
     }],
     "temperature": 0.7,
     "max_tokens": 2500
 }
 
 # Fallback articles in case API fails (in Canadian French)
+# Each article has a theme that matches its content
 FALLBACK_ARTICLES = [
     {
         "id": "lead",
         "title": "La Métropole se modernise : éclairage électrique pour tous les quartiers",
         "content": "Le Conseil municipal a voté hier à l'unanimité pour approuver un vaste plan de modernisation qui apportera l'éclairage électrique public à tous les quartiers d'ici la fin de la décennie. \"C'est une nouvelle ère pour notre grande ville,\" a déclaré le maire Théodore Lavoie. Le plan comprend également l'extension du service de tramway et la construction d'un nouvel hôtel de ville sur la place centrale.",
-        "byline": "Par Henri Laurendeau, Correspondant Principal"
+        "byline": "Par Henri Laurendeau, Correspondant Principal",
+        "theme": "Politique"
     },
     {
         "id": "1",
         "title": "Magnat industriel annonce une nouvelle usine en banlieue",
         "content": "Le puissant industriel Charles Tremblay a révélé hier ses plans pour une nouvelle installation de fabrication en banlieue de Montréal. L'usine, d'une valeur de 2 millions de dollars, devrait créer plus de cinq cents nouveaux emplois et stimuler considérablement l'économie locale. Les travaux devraient commencer au printemps prochain.",
-        "byline": "Par Marguerite Leblanc, Rédactrice Économique"
+        "byline": "Par Marguerite Leblanc, Rédactrice Économique",
+        "theme": "Économie"
     },
     {
         "id": "2",
-        "title": "Aviateur québécois établit un nouveau record de distance en vol",
-        "content": "L'audacieuse aviatrice Amélie Bouchard a de nouveau fait la une en battant le record de distance pour un vol sans escale. Son voyage de 2 100 milles a été accompli en 14 heures à bord de son fidèle biplan, le \"Esprit de l'Aventure\". Mlle Bouchard a déclaré qu'elle prévoyait tenter une traversée transatlantique au printemps prochain.",
-        "byline": "Agence de Presse"
+        "title": "Le téléphonique sans fil révolutionne les communications à Montréal",
+        "content": "Une invention révolutionnaire venue d'Europe fait sensation dans notre ville : le téléphone sans fil portatif. Cette merveille de la technologie moderne permet désormais de communiquer à distance sans être attaché à un poste fixe. Les premiers appareils ont été installés à l'hôtel de ville et chez quelques industriels.",
+        "byline": "Par Georges Laplace, Correspondant Technologique",
+        "theme": "Technologie"
     },
     {
         "id": "featured",
-        "title": "Le grand débat : progrès versus tradition à la Métropole",
-        "content": "Notre ville se trouve à la croisée des chemins. Alors que nous embrassons les merveilles de l'âge moderne avec l'électricité et les automobiles, nous ne devons pas oublier les valeurs et les traditions qui ont fait de nous ce que nous sommes. La nouvelle génération recherche le changement à un rythme sans précédent, tandis que les aînés prônent la patience et la réflexion.",
-        "byline": "Éditorial par Edmund Bertrand"
+        "title": "Merveille médicale : un nouveau traitement contre la tuberculose montre des résultats prometteurs",
+        "content": "Le Dr Éléonore Tremblay de l'Hôpital Général de la Métropole a annoncé hier le succès des essais cliniques d'un nouveau traitement contre la tuberculose qui tourmente notre population depuis des décennies. Les premiers résultats montrent une amélioration remarquable chez les patients.",
+        "byline": "Par Hélène Lapierre, Rédactrice Santé",
+        "theme": "Santé"
     },
     {
         "id": "3",
-        "title": "Agriculture locale : récolte abondante prévue pour l'automne",
-        "content": "Les agriculteurs de toute la région de la Métropole signalent une saison de croissance exceptionnellement prometteuse. L'extension agricole du comté prévoit une récolte de blé qui pourrait dépasser tous les records précédents. \"Les pluies ont été opportunes et le soleil généreux,\" a souligné l'agriculteur Jean Thériault.",
-        "byline": "Par Thomas Lamontagne, Correspondant Agricole"
+        "title": "Le grand ballet national en tournée à la Métropole",
+        "content": "La célèbre troupe du Grand Ballet National a offert hier soir une représentation exceptionnelle au théâtre Royal. Les danseurs ont interprétée une nouvelle œuvre inspirée des légendes autochtones du Québec, sous la direction du maître chorégraphe Antoine Delacroix.",
+        "byline": "Par Sophie Girard, Correspondante Culturelle",
+        "theme": "Culture"
     },
     {
         "id": "4",
-        "title": "Merveille médicale : un nouveau traitement contre la tuberculose montre des résultats prometteurs",
-        "content": "Le Dr Éléonore Tremblay de l'Hôpital Général de la Métropole a annoncé hier le succès des essais cliniques d'un nouveau traitement contre la tuberculose qui tourmente notre population depuis des décennies. Les premiers résultats montrent une amélioration remarquable.",
-        "byline": "Par Hélène Lapierre, Rédactrice Santé"
+        "title": "Le Canadien bat le record de victoires consécutives",
+        "content": "L'équipe de hockey du Canadien de Montréal a établi un nouveau record en remportant sa 15e victoire consécutive hier soir contre les Maple Leafs de Toronto. Les partisans ont envahi la patinoire après le match historique. Le capitaine Jean Bellemare a soulevé la coupe sous les acclamations de la foule.",
+        "byline": "Par Pierre Moreau, Correspondant Sportif",
+        "theme": "Sports"
     },
     {
         "id": "5",
-        "title": "Société : grand bal de charité au Waldorf attire la fine fleur de la Métropole",
-        "content": "L'événement social de la saison a eu lieu hier soir à l'hôtel Waldorf, où la fine fleur de la société s'est réunie pour le bal de charité annuel. Plus de cinq cents invités distingués ont assisté à l'événement.",
-        "byline": "Correspondant Société"
+        "title": "Grand bal de charité au Waldorf attire la fine fleur de la société",
+        "content": "L'événement social de la saison a eu lieu hier soir à l'hôtel Waldorf, où la fine fleur de la société s'est réunie pour le bal de charité annuel. Plus de cinq cents invités distingués ont assisté à l'événement. Les fonds recueillis serviront à construire un nouvel orphelinat.",
+        "byline": "Par Marie-Claire Dubois, Correspondante Société",
+        "theme": "Société"
     }
 ]
 
 def get_fallback_articles():
     """Return articles with themes and random layout"""
-    themes = ['Politique', 'Économie', 'Technologie', 'Santé', 'Culture', 'Sports', 'Société']
-    for i, art in enumerate(FALLBACK_ARTICLES):
-        art['theme'] = themes[i % len(themes)]
-    
+    # FALLBACK_ARTICLES already have themes assigned
+    # Just create random layout
     ids = [a['id'] for a in FALLBACK_ARTICLES]
     random.shuffle(ids)
     layout = {
@@ -114,10 +120,13 @@ try:
     if not isinstance(articles, list) or len(articles) != 7:
         raise ValueError(f"Expected 7 articles, got {len(articles) if isinstance(articles, list) else type(articles)}")
     
-    # Add themes
-    themes = ['Politique', 'Économie', 'Technologie', 'Santé', 'Culture', 'Sports', 'Société']
-    for i, art in enumerate(articles):
-        art['theme'] = themes[i % len(themes)]
+    # Verify all articles have themes and they are valid
+    valid_themes = {'Politique', 'Économie', 'Technologie', 'Santé', 'Culture', 'Sports', 'Société'}
+    for art in articles:
+        if 'theme' not in art:
+            raise ValueError(f"Article missing theme: {art.get('title', 'unknown')}")
+        if art['theme'] not in valid_themes:
+            raise ValueError(f"Invalid theme '{art['theme']}' for article: {art.get('title', 'unknown')}")
     
     # Create random layout
     ids = [a['id'] for a in articles]
