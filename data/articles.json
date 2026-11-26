@@ -2,62 +2,62 @@
   "articles": [
     {
       "id": "lead",
-      "title": "Le grand incendie ravage le quartier Saint-Roch",
-      "content": "Un incendie d'une ampleur sans précédent a dévasté hier soir une partie importante du quartier Saint-Roch, à Québec. Les flammes, attisées par un vent violent, ont réduit en cendres plus d'une vingtaine de bâtiments, dont plusieurs résidences et commerces. Les pompiers, venus en renfort de toute la région, ont lutté toute la nuit pour maîtriser le sinistre. Les autorités estiment que des centaines de familles se retrouvent sans abri.",
-      "byline": "par Henri Laurent, notre envoyée spécial",
+      "title": "Le Premier Ministre annonce de nouvelles réformes fiscales",
+      "content": "Dans un discours prononcé hier à l'Assemblée législative, le Premier Ministre a dévoilé un ensemble de mesures visant à allégé le fardeau fiscal des classes moyennes. Ces réformes, qui devraient entrer en vigueur dès le printemps prochain, incluent une réduction des taxes sur les petits commerces ainsi qu'une augmentation des subventions agricoles. Les opposants critiquent déjà ces propositions, les jugeant insuffisantes pour répondre aux besoins urgents de la population. Les débats parlementaires s'annoncent donc houleux dans les prochaines semaines.",
+      "byline": "Par Édouard Laurent, notre correspondant politique à Québec",
       "theme": "Politique"
     },
     {
       "id": "1",
-      "title": "La grève des ouvriers du port s'intensifie",
-      "content": "Les tensions montent au port de Montréal alors que les ouvriers, en grève depuis une semaine, refusent de reprendre le travail sans garanties salariales. Les patrons des compagnies maritimes menacent de licencier les grévistes et d'engager de nouveaux travailleurs. Des heurts violents ont éclaté hier entre manifestants et forces de l'ordre, faisant plusieurs blessés. La situation préoccupe les autorités municipales.",
-      "byline": "par Jean-Paul Morel",
+      "title": "Boom industriel dans l'est du pays : les usines tournent à plein régime",
+      "content": "Les dernières statistiques révèlent une croissance sans précédent dans le secteur manufacturier de l'est du Canada, avec une hausse de 15% de la production depuis le début de l'année. Les usines de textile et de machinerie lourde, en particulier, peinent à suivre la demande croissante, forçant plusieurs entreprises à embaucher massivement. Les économistes soulignent que cette expansion est en grande partie attribuable aux investissements étrangers et à l'ouverture de nouveaux marchés. Cependant, certains craignent que cette croissance rapide ne mène à une surproduction.",
+      "byline": "Par Jean-Baptiste Morel, rédacteur économique",
       "theme": "Économie"
     },
     {
       "id": "2",
-      "title": "Nouveau pont en construction à Trois-Rivières",
-      "content": "Les travaux du nouveau pont sur le fleuve Saint-Laurent, reliant Trois-Rivières à la rive sud, ont officiellement commencé hier. Ce projet, attendu depuis des années, vise à faciliter les déplacements et à stimuler le commerce régional. Les ingénieurs estiment que l'ouvrage, d'une longueur de près de 500 mètres, sera achevé d'ici deux ans. Les citoyens expriment déjà leur enthousiasme pour cette avancée majeure.",
-      "byline": "par Marie-Claire Dubois",
+      "title": "Le télégraphe sans fil fait son apparition à Montréal",
+      "content": "Une démonstration publique du tout nouveau système de télégraphie sans fil a eu lieu hier au parc La Fontaine, attirant une foule de curieux. Cette technologie révolutionnaire, développée par un inventeur local, permet d'envoyer des messages à plusieurs kilomètres de distance sans l'usage de câbles. Les autorités postales étudient déjà la possibilité d'intégrer ce système pour améliorer les communications entre les villes. Plusieurs entrepreneurs voient là une opportunité en or pour moderniser les affaires.",
+      "byline": "Par Henri Dubois, spécialiste des innovations technologiques",
       "theme": "Technologie"
     },
     {
       "id": "featured",
-      "title": "Le premier cinéma de la ville ouvre ses portes",
-      "content": "C'est sous une pluie de confettis et au son des fanfares que le Cinéma Impérial a inauguré hier soir ses portes au cœur de Montréal. Ce nouvel établissement, doté d'une salle de 500 places, promet de révolutionner les loisirs des citoyens en projetant les derniers films en provenance d'Europe et d'Amérique. Le maire lui-même était présent pour couper le ruban, saluant cette initiative comme un symbole de modernité.",
-      "byline": "par Élise Tremblay",
+      "title": "Épidémie de grippe : les hôpitaux de la métropole sous pression",
+      "content": "Une vague de grippe particulièrement virulente frappe actuellement la région métropolitaine, submergeant les hôpitaux et les cliniques locales. Les médecins appellent la population à prendre des précautions supplémentaires, notamment en évitant les grands rassemblements et en maintenant une hygiène rigoureuse. Les écoles de plusieurs quartiers ont dû fermer temporairement leurs portes pour limiter la propagation du virus. Les autorités sanitaires assurent que des mesures sont en place pour contenir l'épidémie.",
+      "byline": "Par Marie-Claire Tremblay, correspondante médicale",
       "theme": "Santé"
     },
     {
       "id": "3",
-      "title": "Un mystérieux vol à la Banque Nationale",
-      "content": "La police de Québec est à la recherche de malfaiteurs ayant dérobé une somme importante à la succursale de la Banque Nationale située rue Saint-Jean. Les voleurs, masqués et armés, ont agi avec une précision inquiétante, laissant les employés et clients sous le choc. Aucune piste sérieuse n'a encore été identifiée, mais les autorités assurent que l'enquête est en cours. Les citoyens sont invités à signaler tout comportement suspect.",
-      "byline": "par Pierre Lambert",
+      "title": "Le Théâtre Royal présente une nouvelle pièce acclamée par la critique",
+      "content": "La pièce « Les Ombres du Passé », écrite par un jeune dramaturge montrealais, a connu un succès retentissant lors de sa première au Théâtre Royal. Les critiques louent la profondeur des personnages et la qualité des dialogues, qualifiant l'œuvre de chef-d'œuvre du théâtre canadien. Les billets pour les prochaines représentations se vendent comme des petits pains, et plusieurs personnalités influentes ont déjà réservé leur place. Cette production marque sans doute un tournant dans la scène culturelle locale.",
+      "byline": "Par Françoise Lefèvre, chroniquese culturelle",
       "theme": "Culture"
     },
     {
       "id": "4",
-      "title": "La fête de la Saint-Jean-Baptiste en préparation",
-      "content": "Les organisateurs de la fête de la Saint-Jean-Baptiste annoncèrent hier les détails des célébrations prévues pour le 24 juin prochain. Au programme : défilés colorés, concerts de musique traditionnelle et feux d'artifice spectaculaires sur les rives du fleuve. Les préparatifs battent leur plein, et les citoyens sont invités à participer aux répétitions des danses folkloriques. Cette année, l'événement promet d'être plus grandiose que jamais.",
-      "byline": "par Françoise Lavoie",
+      "title": "Les Canadiens de Montréal triomphent lors du match contre Ottawa",
+      "content": "Dans un match palpitant qui a tenu les spectateurs en haleine jusqu'à la dernière minute, les Canadiens de Montréal ont remporté une victoire écrasante de 5 à 2 contre l'équipe d'Ottawa. Le joueur étoile, Joseph Richard, a marqué trois des cinq buts, confirmant une fois de plus son statut de légende vivante du hockey. Les partisans, en liesse, ont envahi la patinoire à la fin de la partie pour célébrer ce triomphe. Cette victoire place les Canadiens en tête du classement de la ligue.",
+      "byline": "Par Louis Gagnon, envoyée spécial au Forum",
       "theme": "Sports"
     },
     {
       "id": "5",
-      "title": "Découverte archéologique majeure à Gaspé",
-      "content": "Une équipe d'archéologues a mis au jour, près de Gaspé, les vestiges d'un village amérindien datant de plus de mille ans. Les artefacts découverts, dont des poteries et des outils en pierre, offrent un éclairage nouveau sur les premières nations ayant habité la région. Les spécialistes estiment que ce site pourrait être l'un des plus importants jamais découverts au Québec. Une exposition temporaire est prévue pour présenter ces trésors au public.",
-      "byline": "par Thomas Bernier",
+      "title": "Débat public sur l'éducation des jeunes filles dans les écoles primaires",
+      "content": "Un vif débat agite actuellement la société québécoise concernant l'accès des jeunes filles à l'éducation primaire, certains conservateurs estimant que leur place est davantage au foyer. Cependant, les progressistes, soutenus par plusieurs enseignants et parents, défendent ardemment le droit des filles à recevoir la même instruction que les garçons. Une pétition circule déjà pour exiger que le gouvernement prenne position sur cette question. Ce sujet divise profondément l'opinion publique et promettra encore de nombreux échanges animés.",
+      "byline": "Par Claire Martin, correspondante sociale",
       "theme": "Société"
     }
   ],
   "layout": {
-    "lead": "lead",
-    "featured": "3",
-    "article-1": "featured",
-    "article-2": "4",
-    "article-3": "1",
-    "article-4": "2",
-    "article-5": "5"
+    "lead": "4",
+    "featured": "2",
+    "article-1": "lead",
+    "article-2": "5",
+    "article-3": "3",
+    "article-4": "1",
+    "article-5": "featured"
   },
-  "generated_at": "2026-11-26 00:18:16"
+  "generated_at": "2026-11-26 00:52:10"
 }
