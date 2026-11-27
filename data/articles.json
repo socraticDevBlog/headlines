@@ -2,62 +2,62 @@
   "articles": [
     {
       "id": "lead",
-      "title": "Le Premier Ministre annonce des réformes audacieuses pour moderniser l'administration publique",
-      "content": "Dans un discours prononcé hier à l'Assemblée législative, le Premier Ministre a dévoilé un plan ambitieux visant à simplifier les procédures gouvernementales et à réduire la bureaucratie. Ces mesures, selon lui, permettront d'accélérer les services aux citoyens tout en maîtrisant les dépenses de l'État. Les partis d'opposition, bien que prudents, ont salué l'initiative, tout en exigeant des garanties sur son financement. Les détails concrets seront présentés lors de la prochaine session parlementaire.",
-      "byline": "Par Édouard Lambert, notre correspondant politique à Québec",
+      "title": "Le maire Lomer Gouin annonce de nouvelles réformes urbaines",
+      "content": "Lors d'une conférence de presse tenue hier à l'Hôtel de Ville, le maire Lomer Gouin a dévoilé un plan ambitieux visant à moderniser les infrastructures de la métropole. Parmi les mesures proposées, on note l'élargissement des rues principales et la création de nouveaux parcs publics pour améliorer la qualité de vie des citoyens. Ces réformes, selon M. Gouin, permettront également de stimuler l'attrait économique de la ville. Les débats à l'Hôtel de Ville s'annoncent déjà houleux.",
+      "byline": "Par Édouard Tremblay, rédacteur en chef politique",
       "theme": "Politique"
     },
     {
       "id": "1",
-      "title": "Hausse des investissements étrangers dans les manufactures de Montréal",
-      "content": "Les dernières données de la Chambre de commerce révèlent une augmentation de 15 % des capitaux étrangers injectés dans les usines montréalaises au cours du dernier trimestre. Cette tendance s'explique par la stabilité économique de la région et les incitatifs fiscaux offerts aux industriels. Les secteurs du textile et de la métallurgie sont particulièrement touchés par cet afflux. Les experts prévoient une création d'emplois significative d'ici la fin de l'année.",
-      "byline": "Par Jean-Baptiste Moreau, chroniqueur économique",
+      "title": "Hausse des investissements dans le secteur manufacturier",
+      "content": "Les usines de la région métropolitaine connaissent un essor sans précédent, avec une augmentation de 15 % des investissements étrangers au cours du dernier trimestre. Les entrepreneurs locaux saluent cette tendance, qui devrait créer plus de 500 emplois d'ici la fin de l'année. Cependant, certains craignent que cette croissance rapide n'entraîne une pénurie de main-d'œuvre qualifiée. Les chambres de commerce appellent à une collaboration accrue avec les écoles techniques.",
+      "byline": "Par Jean-Baptiste Moreau, correspondant économique",
       "theme": "Économie"
     },
     {
       "id": "2",
-      "title": "L'électricité arrive enfin dans les campagnes éloignées grâce à de nouvelles lignes",
-      "content": "Le projet d'électrification rurale, lancé il y a deux ans par la compagnie Hydro-Québec, porte ses premiers fruits. Plusieurs villages des Laurentides et de l'Estrie bénéficient désormais d'un accès régulier au courant électrique, transformant radicalement la vie quotidienne des habitants. Les fermiers peuvent désormais utiliser des machines modernes, tandis que les écoles et les hôpitaux profitent de conditions améliorées. Les travaux se poursuivent pour étendre le réseau à d'autres régions.",
-      "byline": "Par Louis Tremblay, spécialiste des sciences et techniques",
+      "title": "L'électricité domestique bientôt accessible à tous ?",
+      "content": "La Compagnie d'Électricité de Montréal a annoncé hier le déploiement d'un réseau électrique étendu dans les quartiers est de la ville. Grâce à de nouvelles centrales hydroélectriques, les foyers pourront bientôt bénéficier d'un éclairage et d'appareils modernes sans dépendre des lampes à pétrole. Les ingénieurs soulignent que cette avancée réduira également les risques d'incendie. Les travaux débuteront dès le printemps prochain.",
+      "byline": "Par Lucien Dubé, chroniqueur scientifique",
       "theme": "Technologie"
     },
     {
       "id": "featured",
-      "title": "Une épidémie de grippe frappe durement la ville de Québec",
-      "content": "Les autorités sanitaires ont confirmé une recrudescence alarmante des cas de grippe saisonnière, avec plus de 500 nouveaux malades recensés cette semaine. Les hôpitaux de la capitale sont débordés, et des mesures d'urgence ont été mises en place pour isoler les patients les plus gravement atteints. Les médecins recommandent vivement à la population de se faire vacciner et d'éviter les lieux publics bondés. Une campagne de sensibilisation sera lancée dès lundi.",
-      "byline": "Par Dr. Marie-Claude Dubois, médecin hygiéniste",
+      "title": "Une épidémie de grippe frappe les quartiers ouvriers",
+      "content": "Les hôpitaux de la métropole sont submergés par une vague de cas de grippe particulièrement virulente, touchant surtout les familles des quartiers défavorisés. Les médecins attribuent cette propagation à la promiscuité et aux mauvaises conditions sanitaires dans ces secteurs. Les autorités sanitaires appellent à une meilleure hygiène et à l'isolement des malades. Une campagne de vaccination d'urgence est à l'étude.",
+      "byline": "Par Marie-Claire Laurent, spécialiste des questions de santé",
       "theme": "Santé"
     },
     {
       "id": "3",
-      "title": "Le Théâtre du Nouveau-Monde présente une pièce révolutionnaire sur la condition ouvrière",
-      "content": "La troupe du Théâtre du Nouveau-Monde a créé l'événement hier soir avec la première de *Les Ombres de l'atelier*, une pièce de théâtre dénonçant les conditions de travail dans les manufactures. Écrit par un ancien ouvrier devenu dramaturge, le spectacle a été ovationné par un public ému. Les critiques soulignent la force du texte et la performance exceptionnelle des acteurs. La pièce sera jouée pendant tout le mois de décembre.",
-      "byline": "Par Claire Saint-Laurent, critique culturelle",
+      "title": "Le Théâtre Royal présente « La Dame aux camélias »",
+      "content": "La troupe du Théâtre Royal a offert hier soir une représentation mémorable de la pièce « La Dame aux camélias », devant un parterre comble. Les critiques s'accordent à dire que l'interprétation de la comédienne Élisabeth de Montcalm a marqué les esprits par son émotion brute. Cette production, adaptée du roman d'Alexandre Dumas fils, confirmerait la renommée culturelle grandissante de notre ville. Les billets pour les prochaines représentations sont déjà en forte demande.",
+      "byline": "Par Antoine Delorme, critique dramatique",
       "theme": "Culture"
     },
     {
       "id": "4",
-      "title": "Les Canadiens de Montréal remportent une victoire historique contre les Sénateurs d'Ottawa",
-      "content": "Dans un match à couper le souffle, les Canadiens de Montréal ont écrasé leurs rivaux ottaviens par un score de 7 à 2, hier soir au Forum. Le gardien Georges Vézina a réalisé une performance héroïque, repoussant pas moins de 35 tirs. Les partisans, en liesse, ont envahi la patinoire à la fin de la rencontre pour célébrer cette victoire qui propulse l'équipe en tête du championnat. Le prochain affrontement entre les deux clubs est prévu pour le 15 décembre.",
-      "byline": "Par Henri Rivard, envoyée spéciale au Forum",
+      "title": "Les Canadiens de Montréal remportent le championnat de hockey",
+      "content": "Dans un match historique joué devant plus de 10 000 spectateurs, les Canadiens de Montréal ont écrasé leurs adversaires torontois par un score de 6 à 2, s'adjugeant ainsi le championnat de la Ligue nationale de hockey. Le capitaine Georges Vézina a été salué pour ses arrêts décisifs, tandis que l'attaquant Didace Pitre a marqué trois buts. Les célébrations ont duré toute la nuit dans les rues du centre-ville, où les fans ont défilé avec fierté.",
+      "byline": "Par Henri Fortin, journaliste sportif",
       "theme": "Sports"
     },
     {
       "id": "5",
-      "title": "La condition des femmes au travail fait débat lors d'une conférence à Montréal",
-      "content": "Une conférence organisée par la Ligue des droits des femmes a mis en lumière les inégalités persistantes entre les hommes et les femmes dans le milieu professionnel. Les intervenantes ont dénoncé les écarts salariaux et le manque d'opportunités de promotion pour les travailleuses. Plusieurs propositions ont été avancées, dont la création de syndicats féminins et l'adoption de lois protégeant les droits des employées. Le débat a suscité un vif intérêt dans la presse et parmi le public.",
-      "byline": "Par Sophie Gagnon, reporter sociale",
+      "title": "Le débat sur le suffrage féminin gagne en intensité",
+      "content": "Une manifestation organisée hier par des suffragettes a rassemblé plus de 200 femmes devant le Parlement, réclamant le droit de vote pour les Québécoises. Les oratrices, dont la militante Idola Saint-Jean, ont décrié les inégalités persistantes et exigé une représentation politique équitable. Bien que certains hommes politiques se montrent favorables à cette cause, le clergé et les conservateurs s'y opposent farouchement. Le débat promet de s'intensifier dans les prochains mois.",
+      "byline": "Par Cécile Boisvert, reporter sociale",
       "theme": "Société"
     }
   ],
   "layout": {
-    "lead": "5",
-    "featured": "featured",
-    "article-1": "4",
-    "article-2": "2",
-    "article-3": "3",
-    "article-4": "1",
-    "article-5": "lead"
+    "lead": "lead",
+    "featured": "3",
+    "article-1": "featured",
+    "article-2": "4",
+    "article-3": "1",
+    "article-4": "5",
+    "article-5": "2"
   },
-  "generated_at": "2026-11-26 19:25:10"
+  "generated_at": "2026-11-27 19:20:52"
 }
